@@ -1,4 +1,7 @@
 package lk.ijse.gdse.hello.dao.custom;
 
-public interface CustomerDao {
+import lk.ijse.gdse.hello.dao.CrudDao;
+import lk.ijse.gdse.hello.entity.Customer;
+
+public interface CustomerDao extends CrudDao<Customer> {
 }
