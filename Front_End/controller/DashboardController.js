@@ -70,5 +70,3 @@ $("#lnkItem").click(function () {
 $("#lnkOrders").click(function () {
     setView($("#orderContent"));
 });
-
-//end of logics for SPA
