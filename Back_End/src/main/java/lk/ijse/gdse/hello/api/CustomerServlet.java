@@ -43,7 +43,7 @@ public class CustomerServlet extends HttpServlet {
                 customer.add("id",customerDTO.getCusId());
                 customer.add("name",customerDTO.getCusName());
                 customer.add("address",customerDTO.getCusAddress());
-                customer.add("contact",customerDTO.getCusSalary());
+                customer.add("salary",customerDTO.getCusSalary());
 
                 allCustomers.add(customer.build());
             }
