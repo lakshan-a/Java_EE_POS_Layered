@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/">
+    <Resource name="jdbc/pos"
+              auth="Container"
+              type="javax.sql.DataSource"
+              driverClassName="com.mysql.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/thogakade"
+              username="root"
+              password="12345"
+              maxTotal="5"
+              maxIdle="5"
+              maxWaitMillis="1"/>
 </Context>
