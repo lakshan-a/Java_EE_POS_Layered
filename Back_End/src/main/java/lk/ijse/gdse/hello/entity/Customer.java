@@ -46,4 +46,14 @@ public class Customer {
     public void setCusSalary(double cusSalary) {
         this.cusSalary = cusSalary;
     }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "cusId='" + cusId + '\'' +
+                ", cusName='" + cusName + '\'' +
+                ", cusAddress='" + cusAddress + '\'' +
+                ", cusSalary=" + cusSalary +
+                '}';
+    }
 }

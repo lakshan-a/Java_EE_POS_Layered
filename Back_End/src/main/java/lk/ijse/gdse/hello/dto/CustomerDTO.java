@@ -6,14 +6,14 @@ import lombok.NoArgsConstructor;
 //@AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class CustometDTO {
+public class CustomerDTO {
 
     private String cusId;
     private String cusName;
     private String cusAddress;
     private double cusSalary;
 
-    public CustometDTO(String cusId, String cusName, String cusAddress, double cusSalary) {
+    public CustomerDTO(String cusId, String cusName, String cusAddress, double cusSalary) {
         this.cusId = cusId;
         this.cusName = cusName;
         this.cusAddress = cusAddress;
@@ -50,5 +50,15 @@ public class CustometDTO {
 
     public void setCusSalary(double cusSalary) {
         this.cusSalary = cusSalary;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "cusId='" + cusId + '\'' +
+                ", cusName='" + cusName + '\'' +
+                ", cusAddress='" + cusAddress + '\'' +
+                ", cusSalary=" + cusSalary +
+                '}';
     }
 }
