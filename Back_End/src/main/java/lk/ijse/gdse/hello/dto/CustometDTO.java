@@ -1,6 +1,5 @@
-package lk.ijse.gdse.hello.model;
+package lk.ijse.gdse.hello.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
