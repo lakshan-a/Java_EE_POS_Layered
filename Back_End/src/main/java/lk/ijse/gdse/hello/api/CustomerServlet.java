@@ -3,6 +3,7 @@ package lk.ijse.gdse.hello.api;
 import jakarta.json.Json;
 import jakarta.json.JsonArrayBuilder;
 import jakarta.json.JsonObjectBuilder;
+import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,7 +14,6 @@ import lk.ijse.gdse.hello.bo.custom.CustomerBo;
 import lk.ijse.gdse.hello.dto.CustomerDTO;
 import org.apache.commons.dbcp2.BasicDataSource;
 
-import javax.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
@@ -28,10 +28,16 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ServletContext servletContext = (ServletContext) getServletContext();
-        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
-        try (Connection connection = pool.getConnection()){
 
+        resp.addHeader("Access-Control-Allow-Origin","*");
+        resp.setContentType("application/json");
+
+
+        ServletContext servletContext = getServletContext();
+        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
+
+
+        try (Connection connection = pool.getConnection()){
             PrintWriter writer = resp.getWriter();
 
             JsonArrayBuilder allCustomers = Json.createArrayBuilder();
@@ -48,6 +54,9 @@ public class CustomerServlet extends HttpServlet {
 
                 allCustomers.add(customer.build());
             }
+//            Json json = JsonBuilder.create();
+//            jsonb.toJson(customerList,resp.getWriter());
+
             writer.print(allCustomers.build());
 
 
