@@ -136,10 +136,10 @@ $('#btnItemUpdate').click(function () {
 
 $('#btnItemDelete').click(function () {
 
-    const qty = $('#itemQty').val();
+    const code = $('#itemCode').val();
 
     $.ajax({
-        url: "http://localhost:8080/app/items?qty=" + qty,
+        url: "http://localhost:8080/app/items?code=" + code,
         method: "DELETE",
         success: function (resp, textStatus, jqxhr) {
             console.log("success: ", resp);
