@@ -1,14 +1,17 @@
 package lk.ijse.gdse.hello.bo.custom.impl;
 
-import lk.ijse.gdse.hello.bo.custom.CustomerBo;
-import lk.ijse.gdse.hello.dao.custom.CustomerDao;
+import lk.ijse.gdse66.hello.bo.custom.CustomerBo;
+import lk.ijse.gdse66.hello.dao.DAOFactory;
+import lk.ijse.gdse66.hello.dao.custom.CustomerDao;
+import lk.ijse.gdse66.hello.dto.CustomerDTO;
+import lk.ijse.gdse66.hello.entity.Customer;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class CustomerBoImpl implements CustomerBo {
-    CustomerDao customerDAO = (CustomerDao) DaoFactory.getDaoFactory().getDAO(DaoFactory.DAOTypes.CUSTOMER);
+    CustomerDao customerDAO = (CustomerDao) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.CUSTOMER);
     @Override
     public ArrayList<CustomerDTO> getAllCustomers(Connection connection) throws SQLException, ClassNotFoundException {
         ArrayList<CustomerDTO> allCustomers= new ArrayList<>();
