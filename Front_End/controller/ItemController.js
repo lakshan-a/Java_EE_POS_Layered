@@ -90,13 +90,15 @@ $('#btnItemAdd').click(function () {
             console.log("success: ", jqxhr);
         },
         success : function() {
-            loadAllCus();
+            loadAllItems();
         },
         error: function (error) {
             console.log("error: ", error);
         }
     })
+
 });
+
 
 $('#btnItemDelete').click(function () {
 
