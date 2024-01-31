@@ -21,3 +21,37 @@ function loadAllItems(){
     });
 
 }
+
+$('#btnItemGetAll').on("click",function () {
+    Getall();
+});
+
+function Getall(){
+    $.ajax({
+        url : "http://localhost:8080/app/items",
+        method : "GET",
+        success : function (resp) {
+            // console.log("Success: ", resp);
+            console.log(resp[0])
+            for (let i=0; i<resp.length; i++) {
+
+                console.log(resp[i].code);
+                console.log(resp[i].name);
+                console.log(resp[i].qty);
+                console.log(resp[i].price);
+
+                const row = `<tr>
+                                <td>${resp[i].code}</td>
+                                <td>${resp[i].name}</td>
+                                <td>${resp[i].qty}</td>
+                                <td>${resp[i].price}</td>
+                            </tr>`;
+                $('#tblItem').append(row);
+            }
+
+        },
+        error : function (error) {
+            console.log("error: ", error);
+        }
+    })
+}
