@@ -134,7 +134,6 @@ $('#btnItemUpdate').click(function () {
     })
 });
 
-
 $('#btnItemDelete').click(function () {
 
     const code = $('#itemCode').val();
@@ -154,6 +153,5 @@ $('#btnItemDelete').click(function () {
             console.log("error: ", error);
         }
     })
-
 
 });

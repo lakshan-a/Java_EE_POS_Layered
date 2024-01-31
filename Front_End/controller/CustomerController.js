@@ -99,29 +99,6 @@ $('#btnCusAdd').click(function () {
 
 });
 
-$('#btnCusDelete').click(function () {
-
-    const id = $('#txtCustomerID').val();
-
-    $.ajax({
-        url: "http://localhost:8080/app/customers?id=" + id,
-        method: "DELETE",
-        success: function (resp, textStatus, jqxhr) {
-            console.log("success: ", resp);
-            console.log("success: ", textStatus);
-            console.log("success: ", jqxhr);
-        },
-        success : function() {
-            loadAllCus();
-        },
-        error: function (error) {
-            console.log("error: ", error);
-        }
-    })
-
-
-});
-
 $('#btnCusUpdate').click(function () {
 
     const id = $('#txtCustomerID').val();
@@ -155,5 +132,28 @@ $('#btnCusUpdate').click(function () {
             console.log("error: ", error);
         }
     })
+});
+
+$('#btnCusDelete').click(function () {
+
+    const id = $('#txtCustomerID').val();
+
+    $.ajax({
+        url: "http://localhost:8080/app/customers?id=" + id,
+        method: "DELETE",
+        success: function (resp, textStatus, jqxhr) {
+            console.log("success: ", resp);
+            console.log("success: ", textStatus);
+            console.log("success: ", jqxhr);
+        },
+        success : function() {
+            loadAllCus();
+        },
+        error: function (error) {
+            console.log("error: ", error);
+        }
+    })
+
+
 });
 
