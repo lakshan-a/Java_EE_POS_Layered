@@ -5,9 +5,6 @@ package lk.ijse.gdse.hello.dao.custom.impl;
 import lk.ijse.gdse.hello.dao.SQLUtil;
 import lk.ijse.gdse.hello.dao.custom.CustomerDao;
 import lk.ijse.gdse.hello.entity.Customer;
-import lk.ijse.gdse66.hello.dao.SQLUtil;
-import lk.ijse.gdse66.hello.dao.custom.CustomerDao;
-import lk.ijse.gdse66.hello.entity.Customer;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
