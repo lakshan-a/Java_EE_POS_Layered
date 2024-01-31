@@ -56,3 +56,110 @@ function Getall(){
     })
 }
 
+
+$('#btnItemAdd').click(function () {
+
+
+    const code = $('#itemCode').val();
+    const name = $('#itemName').val();
+    const qty = $('#itemQty').val();
+    const price = $('#itemPrice').val();
+
+    const itemObj = {
+        code:code,
+        name:name,
+        qty:qty,
+        price:price
+    };
+
+    const jsonObj = JSON.stringify(itemObj);
+
+    $.ajax({
+        url: "http://localhost:8080/app/items",
+        method: "POST",
+        data: {
+            code:code,
+            name:name,
+            qty:qty,
+            price:price
+        },
+
+        success: function (resp, textStatus, jqxhr) {
+            console.log("success: ", resp);
+            console.log("success: ", textStatus);
+            console.log("success: ", jqxhr);
+        },
+        success : function() {
+            loadAllItems();
+        },
+        error: function (error) {
+            console.log("error: ", error);
+        }
+    })
+
+});
+
+$('#btnItemUpdate').click(function () {
+
+
+    const code = $('#itemCode').val();
+    const name = $('#itemName').val();
+    const qty = $('#itemQty').val();
+    const price = $('#itemPrice').val();
+
+    const itemObj = {
+        code:code,
+        name:name,
+        qty:qty,
+        price:price
+    };
+
+    const jsonObj = JSON.stringify(itemObj);
+
+    $.ajax({
+        url: "http://localhost:8080/app/items",
+        method: "POST",
+        data: {
+            code:code,
+            name:name,
+            qty:qty,
+            price:price
+        },
+
+        success: function (resp, textStatus, jqxhr) {
+            console.log("success: ", resp);
+            console.log("success: ", textStatus);
+            console.log("success: ", jqxhr);
+        },
+        success : function() {
+            loadAllItems();
+        },
+        error: function (error) {
+            console.log("error: ", error);
+        }
+    })
+});
+
+
+$('#btnItemDelete').click(function () {
+
+    const code = $('#itemCode').val();
+
+    $.ajax({
+        url: "http://localhost:8080/app/items?code=" + code,
+        method: "DELETE",
+        success: function (resp, textStatus, jqxhr) {
+            console.log("success: ", resp);
+            console.log("success: ", textStatus);
+            console.log("success: ", jqxhr);
+        },
+        success : function() {
+            loadAllCus();
+        },
+        error: function (error) {
+            console.log("error: ", error);
+        }
+    })
+
+
+});
