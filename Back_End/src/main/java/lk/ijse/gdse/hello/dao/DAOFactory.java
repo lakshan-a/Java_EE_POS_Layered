@@ -1,6 +1,7 @@
 package lk.ijse.gdse.hello.dao;
 
 import lk.ijse.gdse.hello.dao.custom.impl.CustomerDaoImpl;
+import lk.ijse.gdse.hello.dao.custom.impl.ItemDaoImpl;
 
 public class DAOFactory {
     private static DAOFactory daoFactory;
@@ -14,7 +15,7 @@ public class DAOFactory {
     }
 
     public enum DAOTypes {
-        CUSTOMER
+        CUSTOMER,ITEM
 
     }
 
@@ -22,8 +23,8 @@ public class DAOFactory {
         switch (res) {
             case CUSTOMER:
                 return (T) new CustomerDaoImpl();
-//            case ITEM:
-//                return (T) new ItemDAOImpl();
+            case ITEM:
+                return (T) new ItemDaoImpl();
 //            case ORDER:
 //                return (T) new OrderDAOImpl();
 //            case ORDER_DETAILS:
