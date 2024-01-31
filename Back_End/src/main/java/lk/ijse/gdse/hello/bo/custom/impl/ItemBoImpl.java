@@ -27,16 +27,16 @@ public class ItemBoImpl implements ItemBo {
 
     @Override
     public boolean saveItem(Connection connection, ItemDTO itemDTO) throws SQLException, ClassNotFoundException {
-        return false;
+        return itemDAO.save(connection,new Item(itemDTO.getItemCode(),itemDTO.getItemName(),itemDTO.getItemPrice(),itemDTO.getItemQty()));
     }
 
     @Override
     public boolean updateItem(Connection connection, ItemDTO itemDTO) throws SQLException, ClassNotFoundException {
-        return false;
+        return itemDAO.update(connection,new Item(itemDTO.getItemCode(),itemDTO.getItemName(),itemDTO.getItemPrice(),itemDTO.getItemQty()));
     }
 
     @Override
     public boolean deleteItem(Connection connection, String itemCode) throws SQLException, ClassNotFoundException {
-        return false;
+        return itemDAO.delete(connection,itemCode);
     }
 }
