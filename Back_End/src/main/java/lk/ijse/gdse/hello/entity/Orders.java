@@ -8,10 +8,13 @@ public class Orders {
     private String date;
     private String customerID;
 
-    public Orders(String orderID, Date date, String customerID) {
+    public Orders(String orderID, String date, String customerID) {
         this.orderID = orderID;
-        this.date = date;
+        this.date = String.valueOf(date);
         this.customerID = customerID;
+    }
+
+    public Orders(String string, Date date, String rstString) {
     }
 
     public String getOrderID() {
@@ -36,14 +39,5 @@ public class Orders {
 
     public void setCustomerID(String customerID) {
         this.customerID = customerID;
-    }
-
-    @Override
-    public String toString() {
-        return "Orders{" +
-                "orderID='" + orderID + '\'' +
-                ", date='" + date + '\'' +
-                ", customerID='" + customerID + '\'' +
-                '}';
     }
 }
