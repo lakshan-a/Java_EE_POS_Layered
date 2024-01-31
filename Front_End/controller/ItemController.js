@@ -97,3 +97,26 @@ $('#btnItemAdd').click(function () {
         }
     })
 });
+
+$('#btnItemDelete').click(function () {
+
+    const code = $('#itemCode').val();
+
+    $.ajax({
+        url: "http://localhost:8080/app/items?code=" + code,
+        method: "DELETE",
+        success: function (resp, textStatus, jqxhr) {
+            console.log("success: ", resp);
+            console.log("success: ", textStatus);
+            console.log("success: ", jqxhr);
+        },
+        success : function() {
+            loadAllCus();
+        },
+        error: function (error) {
+            console.log("error: ", error);
+        }
+    })
+
+
+});
