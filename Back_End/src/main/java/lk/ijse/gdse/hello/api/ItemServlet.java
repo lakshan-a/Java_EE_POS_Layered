@@ -143,7 +143,29 @@ public class ItemServlet extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doDelete(req, resp);
+
+        resp.addHeader("Access-Control-Allow-Origin", "*");
+        resp.addHeader("Access-Control-Allow-Methods", "DELETE,PUT,GET");
+        resp.addHeader("Access-Control-Allow-Headers", "Content-Type");
+
+        ServletContext servletContext = getServletContext();
+        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
+
+        String id = req.getParameter("id");
+
+        try(Connection connection = pool.getConnection()) {
+            PreparedStatement stm = connection.prepareStatement("DELETE FROM customer WHERE id=?");
+
+            stm.setString(1,id);
+
+            if(stm.executeUpdate() != 0){
+                resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
+            }else{
+                resp.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Failed to delete the customer!");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
