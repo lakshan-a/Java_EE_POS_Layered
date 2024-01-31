@@ -26,15 +26,24 @@ public class CustomerServlet extends HttpServlet {
 
     CustomerBo customerBO = (CustomerBo) BoFactory.getBoFactory().getBO(BoFactory.BOTypes.CUSTOMER);
 
+    BasicDataSource pool;
+
+    @Override
+    public void init() throws ServletException{
+
+        ServletContext sc = getServletContext();
+        pool = (BasicDataSource) sc.getAttribute("dbcp");
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        resp.addHeader("Access-Control-Allow-Origin","*");
-        resp.setContentType("application/json");
-
-
-        ServletContext servletContext = getServletContext();
-        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
+//        resp.addHeader("Access-Control-Allow-Origin","*");
+//        resp.setContentType("application/json");
+//
+//
+//        ServletContext servletContext = getServletContext();
+//        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
 
 
         try (Connection connection = pool.getConnection()){
@@ -71,11 +80,11 @@ public class CustomerServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 
-        resp.addHeader("Access-Control-Allow-Origin","*");
-
-
-        jakarta.servlet.ServletContext servletContext = getServletContext();
-        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
+//        resp.addHeader("Access-Control-Allow-Origin","*");
+//
+//
+//        jakarta.servlet.ServletContext servletContext = getServletContext();
+//        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
 
 
         String id = req.getParameter("id");
@@ -106,10 +115,10 @@ public class CustomerServlet extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        resp.addHeader("Access-Control-Allow-Origin","*");
-
-        ServletContext servletContext = getServletContext();
-        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
+//        resp.addHeader("Access-Control-Allow-Origin","*");
+//
+//        ServletContext servletContext = getServletContext();
+//        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
 
 
         String id = req.getParameter("id");
@@ -137,11 +146,11 @@ public class CustomerServlet extends HttpServlet {
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.addHeader("Access-Control-Allow-Origin", "*");
-
-
-        ServletContext servletContext = getServletContext();
-        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
+//        resp.addHeader("Access-Control-Allow-Origin", "*");
+//
+//
+//        ServletContext servletContext = getServletContext();
+//        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
 
         String id = req.getParameter("id");
 
