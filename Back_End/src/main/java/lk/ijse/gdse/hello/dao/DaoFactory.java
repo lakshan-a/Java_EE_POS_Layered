@@ -1,7 +1,5 @@
 package lk.ijse.gdse.hello.dao;
 
-import lk.ijse.gdse.hello.dao.custom.impl.CustomerDaoImpl;
-
 public class DaoFactory {
     private static DaoFactory daoFactory;
 

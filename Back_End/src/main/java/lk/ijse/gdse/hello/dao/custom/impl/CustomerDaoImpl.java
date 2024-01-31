@@ -1,7 +1,13 @@
 package lk.ijse.gdse.hello.dao.custom.impl;
 
+
+
 import lk.ijse.gdse.hello.dao.SQLUtil;
 import lk.ijse.gdse.hello.dao.custom.CustomerDao;
+import lk.ijse.gdse.hello.entity.Customer;
+import lk.ijse.gdse66.hello.dao.SQLUtil;
+import lk.ijse.gdse66.hello.dao.custom.CustomerDao;
+import lk.ijse.gdse66.hello.entity.Customer;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -22,17 +28,17 @@ public class CustomerDaoImpl implements CustomerDao {
 
     @Override
     public boolean save(Connection connection, Customer entity) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute(connection, "INSERT INTO Customer VALUES (?,?,?,?)", entity.getCusId(), entity.getCusName(), entity.getCusAddress(), entity.getCusSalary());
+        return SQLUtil.execute(connection, "INSERT INTO customer VALUES (?,?,?,?)", entity.getCusId(), entity.getCusName(), entity.getCusAddress(), entity.getCusSalary());
 
     }
 
     @Override
     public boolean update(Connection connection, Customer entity) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute(connection, "UPDATE Customer SET customer_name=?, address=?, contact=? WHERE customer_ID=?",entity.getCusName() , entity.getCusAddress(), entity.getCusSalary(), entity.getCusId());
+        return SQLUtil.execute(connection, "UPDATE customer SET customer_name=?, address=?, contact=? WHERE customer_ID=?",entity.getCusName() , entity.getCusAddress(), entity.getCusSalary(), entity.getCusId());
     }
 
     @Override
     public boolean delete(Connection connection, String Id) throws SQLException, ClassNotFoundException {
-        return SQLUtil.execute(connection, "DELETE FROM Customer WHERE customer_ID=?", Id);
+        return SQLUtil.execute(connection, "DELETE FROM customer WHERE customer_ID=?", Id);
     }
 }
