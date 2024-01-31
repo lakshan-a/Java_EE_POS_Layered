@@ -8,7 +8,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lk.ijse.gdse.hello.bo.BoFactory;
 import lk.ijse.gdse.hello.bo.custom.CustomerBo;
 import org.apache.commons.dbcp2.BasicDataSource;
 

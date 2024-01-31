@@ -1,6 +1,6 @@
 package lk.ijse.gdse.hello.bo;
 
-import lk.ijse.gdse.hello.bo.custom.impl.CustomerBoImpl;
+import lk.ijse.gdse66.hello.bo.custom.impl.CustomerBoImpl;
 
 public class BoFactory {
     private static BoFactory boFactory;
@@ -12,7 +12,7 @@ public class BoFactory {
     }
 
     public enum BOTypes{
-        CUSTOMER,ITEM,PO
+        CUSTOMER
     }
 
     //Object creation logic for BO objects
