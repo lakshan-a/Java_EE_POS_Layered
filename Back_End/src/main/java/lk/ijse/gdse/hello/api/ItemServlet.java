@@ -85,7 +85,7 @@ public class ItemServlet extends HttpServlet {
 
 
         try (Connection connection = pool.getConnection()){
-            PreparedStatement stn = connection.prepareStatement("INSERT INTO customer(code,description,unitPrice,qtyOnHand) VALUES(?,?,?,?)");
+            PreparedStatement stn = connection.prepareStatement("INSERT INTO item(code,description,unitPrice,qtyOnHand) VALUES(?,?,?,?)");
 
             stn.setString(1,code);
             stn.setString(2,description);
@@ -97,6 +97,35 @@ public class ItemServlet extends HttpServlet {
 
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("Hello");
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.addHeader("Access-Control-Allow-Origin", "*");
+
+
+        ServletContext servletContext = getServletContext();
+        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
+
+        String code = req.getParameter("code");
+
+        try (Connection connection =pool.getConnection()){
+            PreparedStatement stm = connection.prepareStatement("DELETE FROM item WHERE code=?");
+            stm.setString(1,code);
+
+            if(stm.executeUpdate() != 0){
+                resp.setStatus(javax.servlet.http.HttpServletResponse.SC_NO_CONTENT);
+            }else{
+                resp.sendError(javax.servlet.http.HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Failed to delete the customer!");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }
