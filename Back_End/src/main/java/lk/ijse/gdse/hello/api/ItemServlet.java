@@ -58,8 +58,6 @@ public class ItemServlet extends HttpServlet {
 
                 allItems.add(customer.build());
             }
-//            Json json = JsonBuilder.create();
-//            jsonb.toJson(customerList,resp.getWriter());
 
             writer.print(allItems.build());
 
@@ -68,6 +66,40 @@ public class ItemServlet extends HttpServlet {
             resp.getWriter().println(e.getMessage());
         } catch (SQLException e) {
             resp.getWriter().println(e.getMessage());
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        resp.addHeader("Access-Control-Allow-Origin","*");
+
+
+        jakarta.servlet.ServletContext servletContext = getServletContext();
+        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
+
+
+        String code = req.getParameter("code");
+        String name = req.getParameter("name");
+        Double price = Double.valueOf(req.getParameter("price"));
+        int qty = Integer.parseInt(req.getParameter("qty"));
+
+        System.out.printf("code=%s ,name=%s ,price=%s ,qty=%s\n" , code,name,price,qty);
+
+
+        try (Connection connection = pool.getConnection()){
+            PreparedStatement stn = connection.prepareStatement("INSERT INTO item(code,description,unitPrice,qtyOnHand) VALUES(?,?,?,?)");
+
+            stn.setString(1,code);
+            stn.setString(2,name);
+            stn.setDouble(3,price);
+            stn.setInt(4,qty);
+
+            stn.executeUpdate();
+            resp.getWriter().write("print!!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
