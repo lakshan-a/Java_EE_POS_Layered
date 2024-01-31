@@ -43,3 +43,31 @@ function loadAllItemDet(){
         }
     });
 }
+
+function getItemDetails() {
+    let rows = $("#orderTable").children().length;
+    var cart = [];
+
+    for (let i = 0; i < rows; i++) {
+        let itCode = $("#orderTable").children().eq(i).children(":eq(0)").text();
+        let avQty = $("#orderTable").children().eq(i).children(":eq(3)").text();
+        let itQty = $("#orderTable").children().eq(i).children(":eq(4)").text();
+        let itPrice = $("#orderTable").children().eq(i).children(":eq(2)").text();
+        cart.push({code: itCode, avQty:avQty, qty: itQty, price: itPrice});
+    }
+
+    return cart;
+}
+
+$('#selectCusID').change(function() {
+    let id = $(this).val();
+
+    for(let i = 0; i < allCustomers.length; i++){
+        if(allCustomers[i].id == id){
+            $('#orderCustomerID').val(allCustomers[i].id);
+            $('#orderCustomerName').val(allCustomers[i].name);
+            $('#orderCustomerAddress').val(allCustomers[i].address);
+            $('#orderCustomerSalary').val(allCustomers[i].salary);
+        }
+    }
+});
