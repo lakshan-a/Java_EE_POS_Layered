@@ -99,6 +99,45 @@ $('#btnItemAdd').click(function () {
 
 });
 
+$('#btnItemUpdate').click(function () {
+
+
+    const code = $('#itemCode').val();
+    const name = $('#itemName').val();
+    const qty = $('#itemQty').val();
+    const price = $('#itemPrice').val();
+
+    const itemObj = {
+        code:code,
+        name:name,
+        qty:qty,
+        price:price
+    };
+
+    const jsonObj = JSON.stringify(itemObj);
+
+    $.ajax({
+        url: "http://localhost:8080/app/items",
+        method: "PUT",
+        data: { id:id,
+            name:name,
+            address:address,
+            salary:salary},
+
+        success: function (resp, textStatus, jqxhr) {
+            console.log("success: ", resp);
+            console.log("success: ", textStatus);
+            console.log("success: ", jqxhr);
+        },
+        success : function() {
+            loadAllItems();
+        },
+        error: function (error) {
+            console.log("error: ", error);
+        }
+    })
+});
+
 
 $('#btnItemDelete').click(function () {
 
