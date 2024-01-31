@@ -68,7 +68,6 @@ public class ItemServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-
         resp.addHeader("Access-Control-Allow-Origin","*");
 
         jakarta.servlet.ServletContext servletContext = getServletContext();
@@ -76,11 +75,11 @@ public class ItemServlet extends HttpServlet {
 
 
         String code = req.getParameter("code");
-        String description = req.getParameter("ItemName");
-        double unitPrice = Double.parseDouble(req.getParameter("Price"));
-        int qty = Integer.parseInt(req.getParameter("ItemQty"));
+        String description = req.getParameter("description");
+        double unitPrice = Double.parseDouble(req.getParameter("unitPrice"));
+        int qty = Integer.parseInt(req.getParameter("qtyOnHand"));
 
-        System.out.printf("code=%s ,ItemName=%s ,Price=%s ,ItemQty=%s\n" , code,description,unitPrice,qty);
+        System.out.printf("code=%s ,description=%s ,unitPrice=%s ,qtyOnHand=%s\n" , code,description,unitPrice,qty);
 
 
         try (Connection connection = pool.getConnection()){
@@ -108,11 +107,11 @@ public class ItemServlet extends HttpServlet {
         BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
 
         String code = req.getParameter("code");
-        String description = req.getParameter("ItemName");
-        double unitPrice = Double.parseDouble(req.getParameter("Price"));
-        int qty = Integer.parseInt(req.getParameter("ItemQty"));
+        String description = req.getParameter("description");
+        double unitPrice = Double.parseDouble(req.getParameter("unitPrice"));
+        int qty = Integer.parseInt(req.getParameter("qtyOnHand"));
 
-        System.out.printf("code=%s ,ItemName=%s ,Price=%s ,ItemQty=%s\n" , code,description,unitPrice,qty);
+        System.out.printf("code=%s ,description=%s ,unitPrice=%s ,qtyOnHand=%s\n" , code,description,unitPrice,qty);
 
         try (Connection connection = pool.getConnection()){
             PreparedStatement stn = connection.prepareStatement("UPDATE item SET description=?,unitPrice=?,qtyOnHand=? WHERE code=?");
