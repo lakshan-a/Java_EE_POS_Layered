@@ -26,6 +26,8 @@ function loadAllCusDet(){
     });
 }
 
+
+
 function loadAllItemDet(){
     $.ajax({
         url : "http://localhost:8080/app/placeOrder",
@@ -44,6 +46,8 @@ function loadAllItemDet(){
     });
 }
 
+
+
 function getItemDetails() {
     let rows = $("#orderTable").children().length;
     var cart = [];
@@ -59,6 +63,8 @@ function getItemDetails() {
     return cart;
 }
 
+
+
 $('#selectCusID').change(function() {
     let id = $(this).val();
 
@@ -72,6 +78,8 @@ $('#selectCusID').change(function() {
     }
 });
 
+
+
 $('#selectItemCode').change(function() {
     let code = $(this).val();
 
@@ -84,6 +92,8 @@ $('#selectItemCode').change(function() {
         }
     }
 });
+
+
 
 $("#btnAddToTable").click(function () {
 
@@ -103,6 +113,8 @@ $("#btnAddToTable").click(function () {
 
 });
 
+
+
 $("#txtDiscount").on("change paste keyup", function() {
 
     $("#subtotal").text(parseInt($('#total').text()) - parseInt($("#txtDiscount").val()));
@@ -116,5 +128,53 @@ $("#txtDiscount").on("change paste keyup", function() {
     if(parseInt($("#txtBalance").val()) < 0){
         $("#txtBalance").val("0");
     }
+
+});
+
+
+$("#txtCash").on("change paste keyup", function() {
+
+    $("#txtBalance").val(parseInt($('#txtCash').val()) - parseInt($("#subtotal").text()));
+
+    if(parseInt($("#txtBalance").val()) < 0){
+        $("#txtBalance").val("0");
+    }
+
+    $("#subtotal").text(parseInt($('#total').text()) - parseInt($("#txtDiscount").val()));
+
+    if(parseInt($("#subtotal").text()) < 0){
+        $("#subtotal").text("0");
+    }
+
+});
+
+
+$('#btnSubmitOrder').click(function(){
+
+    let orderId = $('#txtOrderID').val();
+    let date = $('#txtDate').val();
+    let cusId = $('#orderCustomerID').val();
+    let itemD = getItemDetails();
+
+    let allData = {
+        orderId : orderId,
+        date : date,
+        cusId : cusId,
+        itemDet : itemD
+    }
+
+    $.ajax({
+        url: "http://localhost:8080/app/placeOrder",
+        method: "post",
+        dataType: "json",
+        data: JSON.stringify(allData),
+        contentType: "application/json",
+        success: function (resp) {
+
+        },
+        error: function (error) {
+
+        }
+    });
 
 });
