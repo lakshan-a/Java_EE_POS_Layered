@@ -102,3 +102,19 @@ $("#btnAddToTable").click(function () {
     $('#subtotal').text(subTot);
 
 });
+
+$("#txtDiscount").on("change paste keyup", function() {
+
+    $("#subtotal").text(parseInt($('#total').text()) - parseInt($("#txtDiscount").val()));
+
+    if(parseInt($("#subtotal").text()) < 0){
+        $("#subtotal").text("0");
+    }
+
+    $("#txtBalance").val(parseInt($('#txtCash').val()) - parseInt($("#subtotal").text()));
+
+    if(parseInt($("#txtBalance").val()) < 0){
+        $("#txtBalance").val("0");
+    }
+
+});
