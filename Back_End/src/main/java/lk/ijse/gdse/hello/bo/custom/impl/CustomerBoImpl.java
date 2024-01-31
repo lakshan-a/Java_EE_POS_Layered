@@ -1,7 +1,6 @@
 package lk.ijse.gdse.hello.bo.custom.impl;
 
 import lk.ijse.gdse.hello.bo.custom.CustomerBo;
-import lk.ijse.gdse.hello.dao.DaoFactory;
 import lk.ijse.gdse.hello.dao.custom.CustomerDao;
 
 import java.sql.Connection;
