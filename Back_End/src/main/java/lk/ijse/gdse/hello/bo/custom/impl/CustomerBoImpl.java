@@ -3,7 +3,6 @@ package lk.ijse.gdse.hello.bo.custom.impl;
 import lk.ijse.gdse.hello.bo.custom.CustomerBo;
 import lk.ijse.gdse.hello.dao.DaoFactory;
 import lk.ijse.gdse.hello.dao.custom.CustomerDao;
-import lk.ijse.gdse.hello.dto.CustomerDTO;
 
 import java.sql.Connection;
 import java.sql.SQLException;

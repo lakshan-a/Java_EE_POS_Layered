@@ -1,17 +1,13 @@
 package lk.ijse.gdse.hello.dto;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-//@AllArgsConstructor
-@NoArgsConstructor
-@Data
 public class CustomerDTO {
 
     private String cusId;
     private String cusName;
     private String cusAddress;
     private double cusSalary;
+
+
 
     public CustomerDTO(String cusId, String cusName, String cusAddress, double cusSalary) {
         this.cusId = cusId;
