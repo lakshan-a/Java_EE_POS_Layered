@@ -1,12 +1,14 @@
 package lk.ijse.gdse.hello.entity;
 
+import java.sql.Date;
+
 public class Orders {
 
     private String orderID;
     private String date;
     private String customerID;
 
-    public Orders(String orderID, String date, String customerID) {
+    public Orders(String orderID, Date date, String customerID) {
         this.orderID = orderID;
         this.date = date;
         this.customerID = customerID;
