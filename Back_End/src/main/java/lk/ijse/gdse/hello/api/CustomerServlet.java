@@ -17,6 +17,7 @@ import javax.servlet.ServletContext;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -55,5 +56,41 @@ public class CustomerServlet extends HttpServlet {
         } catch (SQLException e) {
             resp.getWriter().println(e.getMessage());
         }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
+        resp.addHeader("Access-Control-Allow-Origin","*");
+
+
+        jakarta.servlet.ServletContext servletContext = getServletContext();
+        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
+
+
+        String id = req.getParameter("id");
+        String name = req.getParameter("name");
+        String address = req.getParameter("address");
+        String salary = req.getParameter("salary");
+
+        System.out.printf("id=%s ,name=%s ,address=%s\n" , id,name,address);
+
+
+        try (Connection connection = pool.getConnection()){
+            PreparedStatement stn = connection.prepareStatement("INSERT INTO customer(id,name,address,salary) VALUES(?,?,?,?)");
+
+            stn.setString(1,id);
+            stn.setString(2,name);
+            stn.setString(3,address);
+            stn.setString(4,salary);
+
+            stn.executeUpdate();
+            resp.getWriter().write("print!!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 }
