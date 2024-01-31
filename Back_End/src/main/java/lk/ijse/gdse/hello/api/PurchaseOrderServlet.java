@@ -1,8 +1,6 @@
 package lk.ijse.gdse.hello.api;
 
-import jakarta.json.Json;
-import jakarta.json.JsonArrayBuilder;
-import jakarta.json.JsonObjectBuilder;
+import jakarta.json.*;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import lk.ijse.gdse.hello.bo.BoFactory;
 import lk.ijse.gdse.hello.bo.custom.PurchaseOrderBo;
 import lk.ijse.gdse.hello.dto.OrderDTO;
+import lk.ijse.gdse.hello.dto.OrderDetailDTO;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.io.IOException;
@@ -62,7 +61,53 @@ public class PurchaseOrderServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+
+//        JsonReader reader = Json.createReader(req.getReader());
+//        JsonObject jsonObject = reader.readObject();
+////        JsonArray jsonArray=reader.readArray();
+//        String oID = jsonObject.getString("oID");
+//        String oDate = jsonObject.getString("oDate");
+//        String oCusID = jsonObject.getString("oCusID");
+//        String oItemID = jsonObject.getString("oItemID");
+//        String oItemName = jsonObject.getString("oItemName");
+//        String oUnitPrice = jsonObject.getString("oUnitPrice");
+//        String oQty = jsonObject.getString("oQty");
+//        String oQtyOnHnd =jsonObject.getString("oQtyOnHnd");
+//        JsonArray oCartItems = jsonObject.getJsonArray("oCartItems");
+//
+//        ServletContext servletContext =getServletContext();
+//        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
+//
+//        try (Connection connection= pool.getConnection()){
+//
+//
+//
+//            ArrayList<OrderDetailDTO> orderDetailsDTOS = new ArrayList<>();
+//
+//            for (int i = 0; i < oCartItems.size(); i++) {
+//                String iId= oCartItems.getJsonArray(i).getString(0);
+//                int iQty= Integer.parseInt(oCartItems.getJsonArray(i).getString(3));
+//                double iPrice= Double.parseDouble(oCartItems.getJsonArray(i).getString(2));
+//
+//                System.out.println(iId);
+//                System.out.println(iQty);
+//                System.out.println(iPrice);
+//                orderDetailsDTOS.add(new OrderDetailDTO(iId,oID,iQty,iPrice));
+//            }
+//
+//            OrderDTO orderDTO = new OrderDTO(oID,oDate,oCusID,orderDetailsDTOS);
+//            if (purchaseOrderBO.purchaseOrder(connection,orderDTO)){
+//                resp.getWriter().print(ResponseUtil.getJson("OK","Successfully Added !"));
+//            }
+//
+//
+//        } catch (ClassNotFoundException e) {
+//            resp.getWriter().print(ResponseUtil.getJson("Error",e.getMessage()));
+//
+//        } catch (SQLException e) {
+//            resp.getWriter().print(ResponseUtil.getJson("Error",e.getMessage()));
+//
+//        }
     }
 
     @Override
