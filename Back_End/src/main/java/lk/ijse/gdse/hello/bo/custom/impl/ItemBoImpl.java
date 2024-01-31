@@ -1,16 +1,28 @@
 package lk.ijse.gdse.hello.bo.custom.impl;
 
 import lk.ijse.gdse.hello.bo.custom.ItemBo;
+import lk.ijse.gdse.hello.dao.CrudDao;
+import lk.ijse.gdse.hello.dao.DAOFactory;
+import lk.ijse.gdse.hello.dao.custom.ItemDao;
 import lk.ijse.gdse.hello.dto.ItemDTO;
+import lk.ijse.gdse.hello.entity.Item;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ItemBoImpl implements ItemBo {
+
+    ItemDao itemDAO = (ItemDao) DAOFactory.getDAOFactory().getDAO(DAOFactory.DAOTypes.ITEM);
+
     @Override
     public ArrayList<ItemDTO> getAllItems(Connection connection) throws SQLException, ClassNotFoundException {
-        return null;
+        ArrayList<ItemDTO> allItems= new ArrayList<>();
+        ArrayList<Item> all = itemDAO.getAll(connection);
+        for (Item c : all) {
+            allItems.add(new ItemDTO(c.getItemCode(),c.getItemName(),c.getItemPrice(),c.getItemQty()));
+        }
+        return allItems;
     }
 
     @Override
