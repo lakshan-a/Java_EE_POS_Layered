@@ -8,6 +8,9 @@ import lk.ijse.gdse.hello.dao.custom.OrderDetailDao;
 import lk.ijse.gdse.hello.dto.CustomerDTO;
 import lk.ijse.gdse.hello.dto.ItemDTO;
 import lk.ijse.gdse.hello.dto.OrderDTO;
+import lk.ijse.gdse.hello.dto.OrderDetailDTO;
+import lk.ijse.gdse.hello.entity.OrderDetail;
+import lk.ijse.gdse.hello.entity.Orders;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -32,7 +35,24 @@ public class PurchaseOrderBoImpl implements PurchaseOrderBo {
 
     @Override
     public boolean purchaseOrder(Connection connection, OrderDTO dto) throws SQLException, ClassNotFoundException {
+        connection.setAutoCommit(false);
+        if (orderDAO.save(connection,new Orders(dto.getOrderID(),dto.getDate(),dto.getCustomerID()))){
+            for (OrderDetailDTO orderDetailsDTO: dto.getOrderDetailsDTOList()) {
+                if (orderDetailsDAO.save(connection,new OrderDetail(orderDetailsDTO.getItemCode(),orderDetailsDTO.getOrderID(),orderDetailsDTO.getQty(),orderDetailsDTO.getUnitPrice()))){
+                    connection.commit();
+                    connection.setAutoCommit(true);
+                    return true;
+                }else {
+                    connection.rollback();
+                    connection.setAutoCommit(true);
+                    return false;
+                }
+            }
+        }
+        connection.rollback();
+        connection.setAutoCommit(true);
         return false;
+
     }
 
     @Override

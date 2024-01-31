@@ -1,5 +1,7 @@
 package lk.ijse.gdse.hello.dto;
 
+import java.util.List;
+
 public class OrderDTO {
 
     private String orderID;
@@ -7,9 +9,29 @@ public class OrderDTO {
     private String customerID;
 
     public OrderDTO(String orderID, String date, String customerID) {
+        this.orderID=orderID;
+        this.date= String.valueOf(date);
+        this.customerID=customerID;
+    }
+
+    public List<OrderDetailDTO> getOrderDetailsDTOList() {
+        return orderDetailsDTOList;
+    }
+
+    public void setOrderDetailsDTOList(List<OrderDetailDTO> orderDetailsDTOList) {
+        this.orderDetailsDTOList = orderDetailsDTOList;
+    }
+
+    List<OrderDetailDTO> orderDetailsDTOList;
+
+    public OrderDTO(String orderID, String date, String customerID , List orderDetailsDTOList) {
         this.orderID = orderID;
         this.date = date;
         this.customerID = customerID;
+        this.orderDetailsDTOList=orderDetailsDTOList;
+    }
+
+    public OrderDTO() {
     }
 
     public String getOrderID() {
@@ -40,8 +62,9 @@ public class OrderDTO {
     public String toString() {
         return "OrderDTO{" +
                 "orderID='" + orderID + '\'' +
-                ", date='" + date + '\'' +
+                ", date=" + date +
                 ", customerID='" + customerID + '\'' +
+                ", orderDetailsDTOList=" + orderDetailsDTOList +
                 '}';
     }
 }
