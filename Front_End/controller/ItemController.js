@@ -119,12 +119,7 @@ $('#btnItemUpdate').click(function () {
     $.ajax({
         url: "http://localhost:8080/app/items",
         method: "POST",
-        data: {
-            code:code,
-            name:name,
-            qty:qty,
-            price:price
-        },
+        data:  JSON.stringify(itemObj),
 
         success: function (resp, textStatus, jqxhr) {
             console.log("success: ", resp);
