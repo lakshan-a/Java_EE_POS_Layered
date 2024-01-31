@@ -119,10 +119,12 @@ $('#btnItemUpdate').click(function () {
     $.ajax({
         url: "http://localhost:8080/app/items",
         method: "PUT",
-        data: { id:id,
+        data: {
+            code:code,
             name:name,
-            address:address,
-            salary:salary},
+            qty:qty,
+            price:price
+        },
 
         success: function (resp, textStatus, jqxhr) {
             console.log("success: ", resp);
