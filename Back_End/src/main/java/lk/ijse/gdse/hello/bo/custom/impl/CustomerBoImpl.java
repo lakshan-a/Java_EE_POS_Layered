@@ -1,10 +1,10 @@
 package lk.ijse.gdse.hello.bo.custom.impl;
 
-import lk.ijse.gdse66.hello.bo.custom.CustomerBo;
-import lk.ijse.gdse66.hello.dao.DAOFactory;
-import lk.ijse.gdse66.hello.dao.custom.CustomerDao;
-import lk.ijse.gdse66.hello.dto.CustomerDTO;
-import lk.ijse.gdse66.hello.entity.Customer;
+import lk.ijse.gdse.hello.bo.custom.CustomerBo;
+import lk.ijse.gdse.hello.dao.DAOFactory;
+import lk.ijse.gdse.hello.dao.custom.CustomerDao;
+import lk.ijse.gdse.hello.dto.CustomerDTO;
+import lk.ijse.gdse.hello.entity.Customer;
 
 import java.sql.Connection;
 import java.sql.SQLException;
