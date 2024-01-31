@@ -71,7 +71,6 @@ public class ItemServlet extends HttpServlet {
 
         resp.addHeader("Access-Control-Allow-Origin","*");
 
-
         jakarta.servlet.ServletContext servletContext = getServletContext();
         BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
 
@@ -102,11 +101,39 @@ public class ItemServlet extends HttpServlet {
 
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("Hello");
+
+        resp.addHeader("Access-Control-Allow-Origin","*");
+
+        ServletContext servletContext = getServletContext();
+        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
+
+        String code = req.getParameter("code");
+        String description = req.getParameter("ItemName");
+        double unitPrice = Double.parseDouble(req.getParameter("Price"));
+        int qty = Integer.parseInt(req.getParameter("ItemQty"));
+
+        System.out.printf("code=%s ,ItemName=%s ,Price=%s ,ItemQty=%s\n" , code,description,unitPrice,qty);
+
+        try (Connection connection = pool.getConnection()){
+            PreparedStatement stn = connection.prepareStatement("UPDATE item SET description=?,unitPrice=?,qtyOnHand=? WHERE code=?");
+
+            stn.setString(1,code);
+            stn.setString(2,description);
+            stn.setDouble(3,unitPrice);
+            stn.setInt(4,qty);
+
+            stn.executeUpdate();
+            resp.getWriter().write("print!!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+
         resp.addHeader("Access-Control-Allow-Origin", "*");
 
 
