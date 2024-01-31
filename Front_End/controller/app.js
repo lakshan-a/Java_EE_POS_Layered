@@ -88,10 +88,9 @@ $('#btnCusAdd').click(function () {
             console.log("success: ", resp);
             console.log("success: ", textStatus);
             console.log("success: ", jqxhr);
-
-            Getall();
-
-                alert(jqxhr.responseText);
+        },
+        success : function() {
+            loadAllCus();
         },
         error: function (error) {
             console.log("error: ", error);
@@ -112,6 +111,9 @@ $('#btnCusDelete').click(function () {
             console.log("success: ", textStatus);
             console.log("success: ", jqxhr);
         },
+        success : function() {
+            loadAllCus();
+        },
         error: function (error) {
             console.log("error: ", error);
         }
@@ -119,6 +121,7 @@ $('#btnCusDelete').click(function () {
 
 
 });
+
 $('#btnCusUpdate').click(function () {
 
 
@@ -148,6 +151,9 @@ $('#btnCusUpdate').click(function () {
             console.log("success: ", resp);
             console.log("success: ", textStatus);
             console.log("success: ", jqxhr);
+        },
+        success : function() {
+            loadAllCus();
         },
         error: function ( error) {
             console.log("error: ", error);

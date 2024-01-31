@@ -83,7 +83,7 @@ public class CustomerServlet extends HttpServlet {
         String address = req.getParameter("address");
         String salary = req.getParameter("salary");
 
-        System.out.printf("id=%s ,name=%s ,address=%s\n" , id,name,address);
+        System.out.printf("id=%s ,name=%s ,address=%s ,salary=%s\n" , id,name,address,salary);
 
 
         try (Connection connection = pool.getConnection()){
@@ -101,5 +101,61 @@ public class CustomerServlet extends HttpServlet {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        resp.addHeader("Access-Control-Allow-Origin","*");
+
+        ServletContext servletContext = getServletContext();
+        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
+
+
+        String id = req.getParameter("id");
+        String name = req.getParameter("name");
+        String address = req.getParameter("address");
+        String salary = req.getParameter("salary");
+
+        System.out.printf("id=%s ,name=%s ,address=%s ,salary=%s \n" , id,name,address,salary);
+
+        try(Connection connection = pool.getConnection()) {
+            PreparedStatement stn = connection.prepareStatement("UPDATE customer SET name=?,address=?,salary=? WHERE id=?");
+
+            stn.setString(1,id);
+            stn.setString(2,name);
+            stn.setString(3,address);
+            stn.setString(4,salary);
+
+            stn.executeUpdate();
+            resp.getWriter().write("print!!");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.addHeader("Access-Control-Allow-Origin", "*");
+
+
+        ServletContext servletContext = getServletContext();
+        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
+
+        String id = req.getParameter("id");
+
+        try (Connection connection =pool.getConnection()){
+            PreparedStatement stm = connection.prepareStatement("DELETE FROM customer WHERE id=?");
+            stm.setString(1,id);
+
+            if(stm.executeUpdate() != 0){
+                resp.setStatus(javax.servlet.http.HttpServletResponse.SC_NO_CONTENT);
+            }else{
+                resp.sendError(javax.servlet.http.HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Failed to delete the customer!");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
