@@ -124,7 +124,6 @@ $('#btnCusDelete').click(function () {
 
 $('#btnCusUpdate').click(function () {
 
-
     const id = $('#txtCustomerID').val();
     const name = $('#txtCustomerName').val();
     const address = $('#txtCustomerAddress').val();
@@ -142,10 +141,7 @@ $('#btnCusUpdate').click(function () {
     $.ajax({
         url: "http://localhost:8080/app/customers",
         method: "PUT",
-        data: { id:id,
-            name:name,
-            address:address,
-            salary:salary},
+        data: JSON.stringify(customerObj),
 
         success: function (resp, textStatus, jqxhr) {
             console.log("success: ", resp);

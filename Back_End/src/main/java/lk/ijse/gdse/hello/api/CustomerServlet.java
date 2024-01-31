@@ -1,8 +1,6 @@
 package lk.ijse.gdse.hello.api;
 
-import jakarta.json.Json;
-import jakarta.json.JsonArrayBuilder;
-import jakarta.json.JsonObjectBuilder;
+import jakarta.json.*;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -106,27 +104,32 @@ public class CustomerServlet extends HttpServlet {
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        resp.addHeader("Access-Control-Allow-Origin","*");
+        JsonReader reader = Json.createReader(req.getReader());
+        JsonObject jsonObject = reader.readObject();
+
+        String id = jsonObject.getString("id");
+        String name = jsonObject.getString("name");
+        String address = jsonObject.getString("address");
+        Double salary = Double.valueOf(jsonObject.getString("salary"));
+
+        resp.addHeader("Access-Control-Allow-Origin", "*");
+        resp.addHeader("Access-Control-Allow-Methods", "DELETE,PUT,GET");
+        resp.addHeader("Access-Control-Allow-Headers", "Content-Type");
 
         ServletContext servletContext = getServletContext();
         BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
 
-
-        String id = req.getParameter("id");
-        String name = req.getParameter("name");
-        String address = req.getParameter("address");
-        String salary = req.getParameter("salary");
 
         System.out.printf("id=%s ,name=%s ,address=%s ,salary=%s \n" , id,name,address,salary);
 
         try(Connection connection = pool.getConnection()) {
             PreparedStatement stn = connection.prepareStatement("UPDATE customer SET name=?,address=?,salary=? WHERE id=?");
 
+
             stn.setString(1,name);
             stn.setString(2,address);
-            stn.setString(3,salary);
+            stn.setDouble(3,salary);
             stn.setString(4,id);
-
 
             stn.executeUpdate();
             resp.getWriter().write("print!!");
