@@ -125,19 +125,13 @@ public class ItemServlet extends HttpServlet {
         System.out.printf("code=%s ,name=%s ,price=%s ,qty=%s\n" , code,name,price,qty);
 
         try(Connection connection = pool.getConnection()) {
-//            PreparedStatement stn = connection.prepareStatement("UPDATE item SET description=?,unitPrice=?,qtyOnHand=? WHERE code=?");
-            PreparedStatement stn = connection.prepareStatement("UPDATE item SET code=?, description=?,unitPrice=? WHERE qtyOnHand=?");
+            PreparedStatement stn = connection.prepareStatement("UPDATE item SET description=?,unitPrice=?,qtyOnHand=? WHERE code=?");
 
 
-//            stn.setString(1,name);
-//            stn.setDouble(2,price);
-//            stn.setInt(3,qty);
-//            stn.setString(4,code);
-
-            stn.setString(1,code);
-            stn.setString(2,name);
-            stn.setDouble(3,price);
-            stn.setInt(4,qty);
+            stn.setString(1,name);
+            stn.setDouble(2,price);
+            stn.setInt(3,qty);
+            stn.setString(4,code);
 
             stn.executeUpdate();
             resp.getWriter().write("print!!");
