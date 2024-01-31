@@ -84,3 +84,21 @@ $('#selectItemCode').change(function() {
         }
     }
 });
+
+$("#btnAddToTable").click(function () {
+
+    let code = $("#selectItemCode").val();
+    let description = $("#txtItemDescription").val();
+    let itemPrice = $("#txtItemPrice").val();
+    let buyQty = $("#txtQty").val();
+    let avQty = $("#txtQTYOnHand").val();
+    let total = parseFloat(itemPrice) * parseFloat(buyQty);
+    $("#orderTable").append(`<tr><td>${code}</td><td>${description}</td><td>${itemPrice}</td><td>${avQty}</td><td>${buyQty}</td><td>${total}</td></tr>`);
+
+    let tot = Number($('#txtCash').val()) + total;
+    let subTot = Number($('#txtCash').val()) + total - Number($('#txtDiscount').val());
+
+    $('#total').text(tot);
+    $('#subtotal').text(subTot);
+
+});
