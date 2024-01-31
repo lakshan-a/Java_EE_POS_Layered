@@ -101,7 +101,6 @@ $('#btnItemAdd').click(function () {
 
 $('#btnItemUpdate').click(function () {
 
-
     const code = $('#itemCode').val();
     const name = $('#itemName').val();
     const qty = $('#itemQty').val();
@@ -118,8 +117,8 @@ $('#btnItemUpdate').click(function () {
 
     $.ajax({
         url: "http://localhost:8080/app/items",
-        method: "POST",
-        data:  JSON.stringify(itemObj),
+        method: "PUT",
+        data: JSON.stringify(itemObj),
 
         success: function (resp, textStatus, jqxhr) {
             console.log("success: ", resp);
@@ -129,7 +128,7 @@ $('#btnItemUpdate').click(function () {
         success : function() {
             loadAllItems();
         },
-        error: function (error) {
+        error: function ( error) {
             console.log("error: ", error);
         }
     })
