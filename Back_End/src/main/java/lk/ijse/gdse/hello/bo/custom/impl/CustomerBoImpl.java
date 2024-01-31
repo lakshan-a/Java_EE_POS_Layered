@@ -4,7 +4,6 @@ import lk.ijse.gdse.hello.bo.custom.CustomerBo;
 import lk.ijse.gdse.hello.dao.DaoFactory;
 import lk.ijse.gdse.hello.dao.custom.CustomerDao;
 import lk.ijse.gdse.hello.dto.CustomerDTO;
-import lk.ijse.gdse.hello.entity.Customer;
 
 import java.sql.Connection;
 import java.sql.SQLException;
