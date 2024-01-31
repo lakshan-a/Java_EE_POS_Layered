@@ -57,6 +57,11 @@ public class PurchaseOrderBoImpl implements PurchaseOrderBo {
 
     @Override
     public ArrayList<OrderDTO> getAllOrders(Connection connection) throws SQLException, ClassNotFoundException {
-        return null;
+        ArrayList<OrderDTO> allOrders= new ArrayList<>();
+        ArrayList<Orders> all = orderDAO.getAll(connection);
+        for (Orders c : all) {
+            allOrders.add(new OrderDTO(c.getOrderID(),c.getDate(),c.getCustomerID()));
+        }
+        return allOrders;
     }
 }
