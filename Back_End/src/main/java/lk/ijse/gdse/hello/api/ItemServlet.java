@@ -151,12 +151,14 @@ public class ItemServlet extends HttpServlet {
         ServletContext servletContext = getServletContext();
         BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
 
-        String code = req.getParameter("code");
+
+//        String code = req.getParameter("code");
+        int qty = Integer.parseInt(req.getParameter("code"));
 
         try(Connection connection = pool.getConnection()) {
-            PreparedStatement stm = connection.prepareStatement("DELETE FROM item WHERE code=?");
+            PreparedStatement stm = connection.prepareStatement("DELETE FROM item WHERE qtyOnHand=?");
 
-            stm.setString(1,code);
+            stm.setInt(1,qty);
 
             if(stm.executeUpdate() != 0){
                 resp.setStatus(HttpServletResponse.SC_NO_CONTENT);

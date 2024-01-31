@@ -136,10 +136,10 @@ $('#btnItemUpdate').click(function () {
 
 $('#btnItemDelete').click(function () {
 
-    const code = $('#itemCode').val();
+    const qty = $('#itemQty').val();
 
     $.ajax({
-        url: "http://localhost:8080/app/items?code=" + code,
+        url: "http://localhost:8080/app/items?qty=" + qty,
         method: "DELETE",
         success: function (resp, textStatus, jqxhr) {
             console.log("success: ", resp);
@@ -147,7 +147,7 @@ $('#btnItemDelete').click(function () {
             console.log("success: ", jqxhr);
         },
         success : function() {
-            loadAllCus();
+            loadAllItems();
         },
         error: function (error) {
             console.log("error: ", error);
