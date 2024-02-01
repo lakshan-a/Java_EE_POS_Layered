@@ -392,3 +392,26 @@ $('#btnSubmitOrder').click(function () {
 
 })
 
+function getAllOrders(){
+    $("#tblOrders").empty();
+    <!--send ajax request to the item servlet using jQuery-->
+    $.ajax({
+        url: 'http://localhost:8080/app/orders',
+        dataType: "json",
+        success: function (orders) {
+            for (let i in orders) {
+                let order = orders[i];
+                let orderID = order.orderID;
+                let orderCusName = order.orderCusID;
+                let orderDate = order.orderDate;
+                let row = `<tr><td>${orderID}</td><td>${orderCusName}</td><td>${orderDate}</td></tr>`;
+                $("#tblOrders").append(row);
+                // bindTrEventsItem();
+            }
+        },
+        error: function (error) {
+            console.log(error);
+        }
+    });
+}
+
