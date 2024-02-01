@@ -22,7 +22,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet(urlPatterns = "/placeOrder")
+@WebServlet(urlPatterns = "/orders")
 public class PurchaseOrderServlet extends HttpServlet {
 
     PurchaseOrderBo purchaseOrderBO= (PurchaseOrderBo) BoFactory.getBoFactory().getBO(BoFactory.BOTypes.PURCHASE_ORDER);
@@ -130,17 +130,14 @@ public class PurchaseOrderServlet extends HttpServlet {
         String oDate = jsonObject.getString ("oDate");
         String oCusID = jsonObject.getString ("oCusID");
 
-        ServletContext servletContext = getServletContext();
-        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
-
         System.out.println ("Customer"+oID+""+oDate+""+oCusID);
 
         JsonArray oCartItems = jsonObject.getJsonArray ("oCartItems");
 
-        try (Connection connection = pool.getConnection()){
-//            Class.forName ("com.mysql.jdbc.Driver");
-//            Connection connection = DriverManager.getConnection ("jdbc:mysql://localhost:3306/thogakade", "root", "12345");
-//            connection.setAutoCommit (false);
+        try {
+            Class.forName ("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection ("jdbc:mysql://localhost:3306/thogakade", "root", "12345");
+            connection.setAutoCommit (false);
 
             PreparedStatement pstm = connection.prepareStatement ("insert into orders values(?,?,?)");
             pstm.setObject(1, oID);
@@ -190,7 +187,7 @@ public class PurchaseOrderServlet extends HttpServlet {
             connection.commit ();
             connection.setAutoCommit (true);
 
-        } catch (SQLException e) {
+        } catch (ClassNotFoundException | SQLException e) {
             JsonObjectBuilder response = Json.createObjectBuilder();
             response.add("state", "Error");
             response.add("message", e.getMessage());
