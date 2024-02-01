@@ -43,7 +43,7 @@ function setTheLastView() {
             setView($("#orderContent"));
             break;
         case "ORDER_DETAIL":
-            setView($("#orderContent"));
+            setView($("#orderDetailContent"));
             break;
         default:
             setView($("#dashboardContent"));
@@ -51,7 +51,7 @@ function setTheLastView() {
 }
 
 function clearAll() {
-    $("#dashboardContent,#customerContent,#itemContent,#orderContent").css('display', 'none');
+    $("#dashboardContent,#customerContent,#itemContent,#orderContent,#orderDetailContent").css('display', 'none');
 }
 
 function setView(viewOb) {
@@ -75,4 +75,8 @@ $("#lnkItem").click(function () {
 
 $("#lnkOrders").click(function () {
     setView($("#orderContent"));
+});
+
+$("#lnkOrderDetail").click(function () {
+    setView($("#orderDetailContent"));
 });
