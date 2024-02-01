@@ -211,7 +211,7 @@ $("#selectCusID").change(function () {
     let val=$(this).val();
 
     $.ajax({
-        url:'http://localhost:8080/javaEE_Pos/SPA/cus',
+        url:'http://localhost:8080/app/customers',
         method:'get',
         headers:{
             Auth:"user=admin,pass=admin"
@@ -236,3 +236,88 @@ $("#selectCusID").change(function () {
         }
     });
 });
+
+function loadItemIds() {
+    var itemOption='';
+    $.ajax({
+        url:'http://localhost:8080/app/items',
+        method:'get',
+        headers:{
+            Auth:"user=admin,pass=admin"
+        },
+        success:function (items) {
+            for(i in items){
+                let id=items[i].itemId;
+                itemOption += '<option value="' +id + '">' + id + '</option>';
+            }
+            $('#selectItemCode').append(itemOption);
+        }
+    });
+}
+
+$('#selectItemCode').change(function () {
+    var val=$(this).val();
+
+    $.ajax({
+        url:'http://localhost:8080/app/items',
+        method:'get',
+        headers:{
+            Auth:"user=admin,pass=admin"
+        },
+        success:function (items) {
+            for(i in items){
+
+                if (val==items[i].itemId){
+                    $('#txtItemCode').val(items[i].itemId);
+                    $('#txtItemDescription').val(items[i].itemDes);
+                    $('#txtItemPrice').val(items[i].itemUp);
+                    $('#txtQTYOnHand').val(items[i].itemQty);
+                    break;
+                }
+            }
+        }
+    });
+});
+
+let cartItems=[];
+let subTotal=0;
+let discount=0;
+let finalTotal=0;
+
+$('#btnAddToTable').click(function () {
+
+    let itemCode=$('#txtItemCode').val();
+    let itemName=$('#txtItemDescription').val();
+    let price=$('#txtItemPrice').val();
+    let qty=$('#txtQty').val();
+    let qtyOnHand=$('#txtQTYOnHand').val();
+    let total=price*qty;
+    let itemCartRow=[];
+    itemCartRow.push(itemCode,itemName,price,qty,total);
+
+    let row=`<tr><td>${itemCode}</td><td>${itemName}</td><td>${price}</td><td>${qtyOnHand}</td><td>${qty}</td><td>${total}</td></tr>`;
+    $("#orderTable").append(row);
+
+    // cartItems.push(itemCartRow);
+
+    for (let i = 0; i <=itemCartRow.length; i++) {
+        subTotal=subTotal+itemCartRow[4];
+        console.log(itemCartRow[4]);
+        $('#txtTotal').val(parseInt(subTotal));
+    }
+
+    $('#txtQty').val("");
+});
+
+$('#txtDiscount').keydown(function (event) {
+
+    if (event.key==="Enter"){
+        if ($('#txtDiscount').val()!=="0"){
+            finalTotal=subTotal-Number($('#txtDiscount').val());
+
+            $('#txtSubTotal').val(finalTotal);
+        }
+    }
+
+})
+
