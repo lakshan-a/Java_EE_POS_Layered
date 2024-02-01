@@ -26,99 +26,105 @@ public class PurchaseOrderServlet extends HttpServlet {
     PurchaseOrderBo purchaseOrderBO= (PurchaseOrderBo) BoFactory.getBoFactory().getBO(BoFactory.BOTypes.PURCHASE_ORDER);
 
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+//    @Override
+//    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//
 //        resp.addHeader("Access-Control-Allow-Origin", "*");
 //        resp.addHeader("Access-Control-Allow-Methods", "DELETE,PUT,GET");
 //        resp.addHeader("Access-Control-Allow-Headers", "Content-Type");
+//
+//        ServletContext servletContext =getServletContext();
+//        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
+//        PrintWriter writer = resp.getWriter();
+//        try (Connection connection=pool.getConnection()){
+//
+//            JsonArrayBuilder allOrders = Json.createArrayBuilder();
+//            ArrayList<OrderDTO> all = purchaseOrderBO.getAllOrders(connection);
+//
+//            for (OrderDTO orderDTO:all){
+//                JsonObjectBuilder order = Json.createObjectBuilder();
+//                order.add("oID",orderDTO.getOrderID());
+//                order.add("oDate", String.valueOf(orderDTO.getDate()));
+//                order.add("oCusID",orderDTO.getCustomerID());
+//
+//                allOrders.add(order).build();
+//
+//
+//            }
+//            writer.println(allOrders.build());
+//
+//        } catch (ClassNotFoundException e) {
+//            resp.getWriter().println(e.getMessage());
+//        } catch (SQLException e) {
+//            resp.getWriter().println(e.getMessage());
+//        }
+//    }
+//
+//    @Override
+//    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//
+//        resp.addHeader("Access-Control-Allow-Origin", "*");
+//        resp.addHeader("Access-Control-Allow-Methods", "DELETE,PUT,GET");
+//        resp.addHeader("Access-Control-Allow-Headers", "Content-Type");
+//
+//        JsonReader reader = Json.createReader(req.getReader());
+//        JsonObject jsonObject = reader.readObject();
+////        JsonArray jsonArray=reader.readArray();
+//        String oID = jsonObject.getString("oID");
+//        String oDate = jsonObject.getString("oDate");
+//        String oCusID = jsonObject.getString("oCusID");
+//        String oItemID = jsonObject.getString("oItemID");
+//        String oItemName = jsonObject.getString("oItemName");
+//        String oUnitPrice = jsonObject.getString("oUnitPrice");
+//        String oQty = jsonObject.getString("oQty");
+//        String oQtyOnHnd =jsonObject.getString("oQtyOnHnd");
+//        JsonArray oCartItems = jsonObject.getJsonArray("oCartItems");
+//
+//        ServletContext servletContext =getServletContext();
+//        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
+//
+//        try (Connection connection= pool.getConnection()){
+//
+//
+//
+//            ArrayList<OrderDetailDTO> orderDetailsDTOS = new ArrayList<>();
+//
+//            for (int i = 0; i < oCartItems.size(); i++) {
+//                String iId= oCartItems.getJsonArray(i).getString(0);
+//                int iQty= Integer.parseInt(oCartItems.getJsonArray(i).getString(3));
+//                double iPrice= Double.parseDouble(oCartItems.getJsonArray(i).getString(2));
+//
+//                System.out.println(iId);
+//                System.out.println(iQty);
+//                System.out.println(iPrice);
+//                orderDetailsDTOS.add(new OrderDetailDTO(iId,oID,iQty,iPrice));
+//            }
+//
+//            OrderDTO orderDTO = new OrderDTO(oID,oDate,oCusID,orderDetailsDTOS);
+//            if (purchaseOrderBO.purchaseOrder(connection,orderDTO)){
+//                resp.getWriter().print(ResponseUtil.getJson("OK","Successfully Added !"));
+//            }
+//
+//
+//        } catch (ClassNotFoundException e) {
+//            resp.getWriter().print(ResponseUtil.getJson("Error",e.getMessage()));
+//
+//        } catch (SQLException e) {
+//            resp.getWriter().print(ResponseUtil.getJson("Error",e.getMessage()));
+//
+//        }
+//    }
 
-        ServletContext servletContext =getServletContext();
-        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
-        PrintWriter writer = resp.getWriter();
-        try (Connection connection=pool.getConnection()){
-
-            JsonArrayBuilder allOrders = Json.createArrayBuilder();
-            ArrayList<OrderDTO> all = purchaseOrderBO.getAllOrders(connection);
-
-            for (OrderDTO orderDTO:all){
-                JsonObjectBuilder order = Json.createObjectBuilder();
-                order.add("oID",orderDTO.getOrderID());
-                order.add("oDate", String.valueOf(orderDTO.getDate()));
-                order.add("oCusID",orderDTO.getCustomerID());
-
-                allOrders.add(order).build();
-
-
-            }
-            writer.println(allOrders.build());
-
-        } catch (ClassNotFoundException e) {
-            resp.getWriter().println(e.getMessage());
-        } catch (SQLException e) {
-            resp.getWriter().println(e.getMessage());
-        }
-    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-//        resp.addHeader("Access-Control-Allow-Origin", "*");
-//        resp.addHeader("Access-Control-Allow-Methods", "DELETE,PUT,GET");
-//        resp.addHeader("Access-Control-Allow-Headers", "Content-Type");
-
-        JsonReader reader = Json.createReader(req.getReader());
-        JsonObject jsonObject = reader.readObject();
-//        JsonArray jsonArray=reader.readArray();
-        String oID = jsonObject.getString("oID");
-        String oDate = jsonObject.getString("oDate");
-        String oCusID = jsonObject.getString("oCusID");
-        String oItemID = jsonObject.getString("oItemID");
-        String oItemName = jsonObject.getString("oItemName");
-        String oUnitPrice = jsonObject.getString("oUnitPrice");
-        String oQty = jsonObject.getString("oQty");
-        String oQtyOnHnd =jsonObject.getString("oQtyOnHnd");
-        JsonArray oCartItems = jsonObject.getJsonArray("oCartItems");
-
-        ServletContext servletContext =getServletContext();
-        BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
-
-        try (Connection connection= pool.getConnection()){
-
-
-
-            ArrayList<OrderDetailDTO> orderDetailsDTOS = new ArrayList<>();
-
-            for (int i = 0; i < oCartItems.size(); i++) {
-                String iId= oCartItems.getJsonArray(i).getString(0);
-                int iQty= Integer.parseInt(oCartItems.getJsonArray(i).getString(3));
-                double iPrice= Double.parseDouble(oCartItems.getJsonArray(i).getString(2));
-
-                System.out.println(iId);
-                System.out.println(iQty);
-                System.out.println(iPrice);
-                orderDetailsDTOS.add(new OrderDetailDTO(iId,oID,iQty,iPrice));
-            }
-
-            OrderDTO orderDTO = new OrderDTO(oID,oDate,oCusID,orderDetailsDTOS);
-            if (purchaseOrderBO.purchaseOrder(connection,orderDTO)){
-                resp.getWriter().print(ResponseUtil.getJson("OK","Successfully Added !"));
-            }
-
-
-        } catch (ClassNotFoundException e) {
-            resp.getWriter().print(ResponseUtil.getJson("Error",e.getMessage()));
-
-        } catch (SQLException e) {
-            resp.getWriter().print(ResponseUtil.getJson("Error",e.getMessage()));
-
-        }
+        super.doPost(req, resp);
     }
 
     @Override
     protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        resp.addHeader("Access-Control-Allow-Origin", "*");
-//        resp.addHeader("Access-Control-Allow-Methods", "DELETE,PUT,GET");
-//        resp.addHeader("Access-Control-Allow-Headers", "Content-Type");
+        resp.addHeader("Access-Control-Allow-Origin", "*");
+        resp.addHeader("Access-Control-Allow-Methods", "DELETE,PUT,GET");
+        resp.addHeader("Access-Control-Allow-Headers", "Content-Type");
     }
 }
