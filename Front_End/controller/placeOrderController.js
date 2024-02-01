@@ -115,38 +115,38 @@ $("#btnAddToTable").click(function () {
 
 
 
-// $("#txtDiscount").on("change paste keyup", function() {
-//
-//     $("#subtotal").text(parseInt($('#total').text()) - parseInt($("#txtDiscount").val()));
-//
-//     if(parseInt($("#subtotal").text()) < 0){
-//         $("#subtotal").text("0");
-//     }
-//
-//     $("#txtBalance").val(parseInt($('#txtCash').val()) - parseInt($("#subtotal").text()));
-//
-//     if(parseInt($("#txtBalance").val()) < 0){
-//         $("#txtBalance").val("0");
-//     }
-//
-// });
-//
-//
-// $("#txtCash").on("change paste keyup", function() {
-//
-//     $("#txtBalance").val(parseInt($('#txtCash').val()) - parseInt($("#subtotal").text()));
-//
-//     if(parseInt($("#txtBalance").val()) < 0){
-//         $("#txtBalance").val("0");
-//     }
-//
-//     $("#subtotal").text(parseInt($('#total').text()) - parseInt($("#txtDiscount").val()));
-//
-//     if(parseInt($("#subtotal").text()) < 0){
-//         $("#subtotal").text("0");
-//     }
-//
-// });
+$("#txtDiscount").on("change paste keyup", function() {
+
+    $("#subtotal").text(parseInt($('#total').text()) - parseInt($("#txtDiscount").val()));
+
+    if(parseInt($("#subtotal").text()) < 0){
+        $("#subtotal").text("0");
+    }
+
+    $("#txtBalance").val(parseInt($('#txtCash').val()) - parseInt($("#subtotal").text()));
+
+    if(parseInt($("#txtBalance").val()) < 0){
+        $("#txtBalance").val("0");
+    }
+
+});
+
+
+$("#txtCash").on("change paste keyup", function() {
+
+    $("#txtBalance").val(parseInt($('#txtCash').val()) - parseInt($("#subtotal").text()));
+
+    if(parseInt($("#txtBalance").val()) < 0){
+        $("#txtBalance").val("0");
+    }
+
+    $("#subtotal").text(parseInt($('#total').text()) - parseInt($("#txtDiscount").val()));
+
+    if(parseInt($("#subtotal").text()) < 0){
+        $("#subtotal").text("0");
+    }
+
+});
 
 
 $('#btnSubmitOrder').click(function(){
