@@ -350,3 +350,45 @@ function getItemDetails() {
     }
 }
 
+
+// ========================================================
+$('#btnSubmitOrder').click(function () {
+    let oID = $('#txtOrderID').val();
+    let oDate= $('#txtDate').val();
+    let oCusID= $('#selectCusID').val();
+    let oCartItems=getItemDetails();
+
+    let order = {
+        "oID": oID,
+        "oDate": oDate,
+        "oCusID": oCusID,
+        "oCartItems": oCartItems
+    }
+
+    $.ajax({
+        url: 'http://localhost:8080/app/orders',
+        method: "post",
+        setRequestHeader:"Access-Control-Allow-Origin",
+        origin:"*",
+        contentType: "application/json",
+        data: JSON.stringify(order),
+        headers:{
+            Auth:"user=admin,pass=admin"
+        },
+        success: function (resp) {
+            alert("Order Succuss");
+            console.log(resp.message);
+        },
+        error: function (error) {
+            console.log(error.message);
+        }
+    });
+
+    $('#txtTotal').val("");
+    $('#txtSubTotal').val("");
+    $('#txtCash').val("");
+    $('#txtDiscount').val("");
+    $('#txtBalance').val("");
+
+})
+
