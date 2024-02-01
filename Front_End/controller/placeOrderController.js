@@ -321,3 +321,32 @@ $('#txtDiscount').keydown(function (event) {
 
 })
 
+$('#txtCash').keydown(function (event) {
+    if(event.key==="Enter"){
+        let balance= $('#txtCash').val()-finalTotal;
+
+        $('#txtBalance').val(parseInt(balance));
+    }
+})
+
+function getItemDetails() {
+    let rows = $('#orderTable').children().length;
+    var array = [];
+
+    for (let i = 0; i < rows; i++) {
+        let code = $('#orderTable').children().eq(i).children(":eq(0)").text();
+        let des = $('#orderTable').children().eq(i).children(":eq(1)").text();
+        let price = $('#orderTable').children().eq(i).children(":eq(2)").text();
+        let qtyOnHand = $('#orderTable').children().eq(i).children(":eq(3)").text();
+        let qty = $('#orderTable').children().eq(i).children(":eq(4)").text();
+        array.push({
+            itemCode: code,
+            itemDes: des,
+            itemPrice: price,
+            qtyOnHand: qtyOnHand,
+            qty: qty
+        });
+        return array;
+    }
+}
+
