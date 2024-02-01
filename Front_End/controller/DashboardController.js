@@ -21,6 +21,9 @@ function saveLastView(clickedID) {
         case "orderContent":
             localStorage.setItem("view", "ORDER");
             break;
+        case "orderDetailContent":
+            localStorage.setItem("view", "ORDER_DETAIL");
+            break;
     }
 }
 
@@ -37,6 +40,9 @@ function setTheLastView() {
             setView($("#customerContent"));
             break;
         case "ORDER":
+            setView($("#orderContent"));
+            break;
+        case "ORDER_DETAIL":
             setView($("#orderContent"));
             break;
         default:

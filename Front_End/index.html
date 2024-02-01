@@ -26,6 +26,7 @@
             <li class="list-group-item bg-white" id="lnkCustomer"><a href="#">Customer</a></li>
             <li class="list-group-item bg-white" id="lnkItem"><a href="#">Item</a></li>
             <li class="list-group-item bg-white" id="lnkOrders"><a href="#">Orders</a></li>
+            <li class="list-group-item bg-white" id="lnkOrderDetail"><a href="#">Order Detail</a></li>
         </ul>
     </header>
 
@@ -389,6 +390,36 @@
             </div>
         </div>
     </main>
+
+
+
+<!--Order Detail Content-->
+<main class="container-fluid" id="orderDetailContent">
+    <div class="container-fluid mt-4">
+        <!--main tile-->
+        <div class="jumbotron pt-4">
+            <!--order Detail table-->
+            <div class="col-md-12 mt-4" style="height:180px; overflow-y: scroll">
+                <table class="table table-bordered text-white">
+                    <thead class="bg-primary">
+                    <tr>
+                        <th>Item Code</th>
+                        <th>Item Name</th>
+                        <th>Price</th>
+                        <th>Available Qty</th>
+                        <th>Buying Amount</th>
+                        <th>Total</th>
+                    </tr>
+                    </thead>
+                    <tbody class="bg-light text-dark" id="orderTable">
+
+                    </tbody>
+                </table>
+            </div>
+            <!---------->
+        </div>
+    </div>
+</main>
 
 <script src="assets/js/bootstrap.js"></script>
 <script src="assets/code.jquery.com_jquery-3.7.1.min.js"></script>
