@@ -47,14 +47,14 @@ public class ItemServlet extends HttpServlet {
             ArrayList<ItemDTO> all = itemBO.getAllItems(connection);
 
             for (ItemDTO itemDTO:all){
-                JsonObjectBuilder customer = Json.createObjectBuilder();
+                JsonObjectBuilder item = Json.createObjectBuilder();
 
-                customer.add("code",itemDTO.getItemCode());
-                customer.add("name",itemDTO.getItemName());
-                customer.add("qty",itemDTO.getItemQty());
-                customer.add("price",itemDTO.getItemPrice());
+                item.add("code",itemDTO.getItemCode());
+                item.add("name",itemDTO.getItemName());
+                item.add("qty",itemDTO.getItemQty());
+                item.add("price",itemDTO.getItemPrice());
 
-                allItems.add(customer.build());
+                allItems.add(item.build());
             }
 
             writer.print(allItems.build());
