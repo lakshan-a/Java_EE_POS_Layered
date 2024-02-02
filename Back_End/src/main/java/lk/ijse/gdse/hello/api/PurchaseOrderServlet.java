@@ -28,6 +28,15 @@ public class PurchaseOrderServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+
+
+//            resp.addHeader("Access-Control-Allow-Origin","*");
+        resp.addHeader("Content-Type","application/json");
+
+        resp.addHeader("Access-Control-Allow-Origin", "*");
+        resp.addHeader("Access-Control-Allow-Methods", "DELETE,PUT,GET");
+        resp.addHeader("Access-Control-Allow-Headers", "Content-Type");
+
             try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/thogakade", "root", "12345");
@@ -38,12 +47,6 @@ public class PurchaseOrderServlet extends HttpServlet {
             PrintWriter writer = resp.getWriter();
 
 
-//            resp.addHeader("Access-Control-Allow-Origin","*");
-            resp.addHeader("Content-Type","application/json");
-
-            resp.addHeader("Access-Control-Allow-Origin", "*");
-            resp.addHeader("Access-Control-Allow-Methods", "DELETE,PUT,GET");
-            resp.addHeader("Access-Control-Allow-Headers", "Content-Type");
 
             JsonArrayBuilder allCustomers = Json.createArrayBuilder();
 
@@ -94,6 +97,17 @@ public class PurchaseOrderServlet extends HttpServlet {
 
         for (JsonValue obj : oCartItems){
             System.out.println(obj);
+            try {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection connection =DriverManager.getConnection("jdbc:mysql://localhost:3306/thogakade", "root","12345");
+                connection.setAutoCommit(false);
+                PreparedStatement pstm = connection.prepareStatement("insert into orders values(?,?,?)");
+                pstm.setObject(1,oID);
+                pstm.setObject(2,oDate);
+                pstm.setObject(3,oCartItems);
+            } catch (ClassNotFoundException | SQLException e) {
+                e.printStackTrace();
+            }
         }
 
 

@@ -72,10 +72,8 @@ public class ItemServlet extends HttpServlet {
 
         resp.addHeader("Access-Control-Allow-Origin","*");
 
-
         jakarta.servlet.ServletContext servletContext = getServletContext();
         BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
-
 
         String code = req.getParameter("code");
         String name = req.getParameter("name");
@@ -83,7 +81,6 @@ public class ItemServlet extends HttpServlet {
         int qty = Integer.parseInt(req.getParameter("qty"));
 
         System.out.printf("code=%s ,name=%s ,price=%s ,qty=%s\n" , code,name,price,qty);
-
 
         try (Connection connection = pool.getConnection()){
             PreparedStatement stn = connection.prepareStatement("INSERT INTO item(code,description,unitPrice,qtyOnHand) VALUES(?,?,?,?)");
