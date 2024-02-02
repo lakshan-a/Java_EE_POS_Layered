@@ -97,17 +97,6 @@ public class PurchaseOrderServlet extends HttpServlet {
 
         for (JsonValue obj : oCartItems){
             System.out.println(obj);
-            try {
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection connection =DriverManager.getConnection("jdbc:mysql://localhost:3306/thogakade", "root","12345");
-                connection.setAutoCommit(false);
-                PreparedStatement pstm = connection.prepareStatement("insert into orders values(?,?,?)");
-                pstm.setObject(1,oID);
-                pstm.setObject(2,oDate);
-                pstm.setObject(3,oCartItems);
-            } catch (ClassNotFoundException | SQLException e) {
-                e.printStackTrace();
-            }
         }
 
 
