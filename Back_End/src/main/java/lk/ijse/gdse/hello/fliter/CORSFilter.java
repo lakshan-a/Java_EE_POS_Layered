@@ -1,20 +1,26 @@
 package lk.ijse.gdse.hello.fliter;
 
-import jakarta.servlet.FilterChain;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
-import jakarta.servlet.annotation.WebFilter;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpFilter;
-
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebFilter;
+import javax.servlet.http.HttpFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebFilter(filterName = "CORSFilter", urlPatterns = "/*")
 public class CORSFilter extends HttpFilter {
 
     @Override
-    public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
-        super.doFilter(req, res, chain);
+    protected void doFilter(HttpServletRequest req, HttpServletResponse res, FilterChain chain) throws IOException, ServletException {
+        String origin = req.getHeader("origin");
+        if(origin == null){
+            res.sendError(HttpServletResponse.SC_BAD_REQUEST,"CORS Policy Violation");
+            return;
+        }
+        res.addHeader("Access-Control-Allow-Origin", origin);
+        res.addHeader("Access-Control-Allow-Headers", "Content-Type");
+        res.addHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, OPTION, HEAD");
+        chain.doFilter(req,res);
     }
 }
