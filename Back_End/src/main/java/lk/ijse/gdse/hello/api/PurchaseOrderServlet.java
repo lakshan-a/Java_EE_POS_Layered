@@ -104,7 +104,7 @@ public class PurchaseOrderServlet extends HttpServlet {
         //int newQty=Integer.parseInt (qtyOnHand)-Integer.parseInt (oQty);
 
 
-        try {
+      /*  try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/thogakade", "root", "12345");
             connection.setAutoCommit(false);
@@ -166,7 +166,7 @@ public class PurchaseOrderServlet extends HttpServlet {
             resp.setStatus(400);
             resp.getWriter().print(response.build());
 
-        }
+        }*/
     }
 
 
