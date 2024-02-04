@@ -1,27 +1,19 @@
 package lk.ijse.gdse.hello.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import jakarta.json.*;
-import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lk.ijse.gdse.hello.bo.BoFactory;
-import lk.ijse.gdse.hello.bo.custom.PurchaseOrderBo;
 import lk.ijse.gdse.hello.dao.SQLUtil;
 import lk.ijse.gdse.hello.db.DBConnection;
 import lk.ijse.gdse.hello.dto.OrderDTO;
 import lk.ijse.gdse.hello.dto.OrderDetailDTO;
-import lk.ijse.gdse.hello.util.ResponseUtil;
-import org.apache.commons.dbcp2.BasicDataSource;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.*;
-import java.util.ArrayList;
 
 @WebServlet(urlPatterns = "/orders")
 public class PurchaseOrderServlet extends HttpServlet {
@@ -70,9 +62,9 @@ public class PurchaseOrderServlet extends HttpServlet {
 
             if (orderResult) {
                 // Save Order Details
-                for (OrderDetailDTO orderDetail : O.getOrderItems()) {
-                    String sqlOrderDetail = "INSERT INTO orderdetail (orderId, itemCode, qty, unitPrice) VALUES (?, ?, ?, ?)";
-                    Boolean orderDetailResult = SQLUtil.execute(sqlOrderDetail, orderDetail.getItemCode(), orderDto.getOrderID(), orderDetail.getQty(), orderDetail.getUnitPrice());
+                for (OrderDetailDTO orderDetail : orderDto.getOrderItems()) {
+                    String sqlOrderDetail = "INSERT INTO orderdetail (itemCode, orderID, quantity, itemPrice) VALUES (?, ?, ?, ?)";
+                    Boolean orderDetailResult = SQLUtil.execute(sqlOrderDetail, orderDetail.getItemCode(), orderDto.getOrderID(), orderDetail.getQuantity(), orderDetail.getItemPrice());
 
                     if (!orderDetailResult) {
                         System.out.println("Failed to save order details");
