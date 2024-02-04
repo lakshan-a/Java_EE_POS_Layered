@@ -7,6 +7,8 @@ public class OrderDTO {
     private String orderID;
     private String date;
     private String customerID;
+    private OrderDetailDTO[] orderItems;
+
 
     public OrderDTO(String orderID, String date, String customerID) {
         this.orderID=orderID;

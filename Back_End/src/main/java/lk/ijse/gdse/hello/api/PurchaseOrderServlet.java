@@ -70,9 +70,9 @@ public class PurchaseOrderServlet extends HttpServlet {
 
             if (orderResult) {
                 // Save Order Details
-                for (OrderDetailDTO orderDetail : orderDto.getOrderItems()) {
-                    String sqlOrderDetail = "INSERT INTO orderdetail (itemCode, orderID, quantity, itemPrice) VALUES (?, ?, ?, ?)";
-                    Boolean orderDetailResult = SQLUtil.execute(sqlOrderDetail, orderDetail.getItemCode(), orderDto.getOrderID(), orderDetail.getQuantity(), orderDetail.getItemPrice());
+                for (OrderDetailDTO orderDetail : O.getOrderItems()) {
+                    String sqlOrderDetail = "INSERT INTO orderdetail (orderId, itemCode, qty, unitPrice) VALUES (?, ?, ?, ?)";
+                    Boolean orderDetailResult = SQLUtil.execute(sqlOrderDetail, orderDetail.getItemCode(), orderDto.getOrderID(), orderDetail.getQty(), orderDetail.getUnitPrice());
 
                     if (!orderDetailResult) {
                         System.out.println("Failed to save order details");
