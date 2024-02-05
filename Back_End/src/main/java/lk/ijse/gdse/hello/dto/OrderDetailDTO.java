@@ -4,14 +4,17 @@ public class OrderDetailDTO {
 
     private String itemCode;
     private String orderID;
-    private int qty;
-    private double unitPrice;
+    private Integer qty;
+    private Double unitPrice;
 
-    public OrderDetailDTO(String itemCode, String orderID, int qty, double unitPrice) {
+    public OrderDetailDTO(String itemCode, String orderID, Integer qty, Double unitPrice) {
         this.itemCode = itemCode;
         this.orderID = orderID;
         this.qty = qty;
         this.unitPrice = unitPrice;
+    }
+
+    public OrderDetailDTO() {
     }
 
     public String getItemCode() {
@@ -48,7 +51,7 @@ public class OrderDetailDTO {
 
     @Override
     public String toString() {
-        return "OrderDetailDTO{" +
+        return "OrderDetail{" +
                 "itemCode='" + itemCode + '\'' +
                 ", orderID='" + orderID + '\'' +
                 ", qty=" + qty +

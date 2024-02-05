@@ -3,12 +3,12 @@ package lk.ijse.gdse.hello.dto;
 import java.util.List;
 
 public class OrderDTO {
+
     private String orderID;
-
     private String date;
-
-
     private String customerID;
+    private OrderDetailDTO[] orderItems;
+
 
     public OrderDTO(String orderID, String date, String customerID) {
         this.orderID=orderID;
@@ -16,15 +16,15 @@ public class OrderDTO {
         this.customerID=customerID;
     }
 
-    public List<OrderDetailsDTO> getOrderDetailsDTOList() {
+    public List<OrderDetailDTO> getOrderDetailsDTOList() {
         return orderDetailsDTOList;
     }
 
-    public void setOrderDetailsDTOList(List<OrderDetailsDTO> orderDetailsDTOList) {
+    public void setOrderDetailsDTOList(List<OrderDetailDTO> orderDetailsDTOList) {
         this.orderDetailsDTOList = orderDetailsDTOList;
     }
 
-    List<OrderDetailsDTO> orderDetailsDTOList;
+    List<OrderDetailDTO> orderDetailsDTOList;
 
     public OrderDTO(String orderID, String date, String customerID , List orderDetailsDTOList) {
         this.orderID = orderID;
