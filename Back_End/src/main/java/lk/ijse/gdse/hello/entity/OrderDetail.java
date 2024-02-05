@@ -14,6 +14,9 @@ public class OrderDetail {
         this.unitPrice = unitPrice;
     }
 
+    public OrderDetail() {
+    }
+
     public String getItemCode() {
         return itemCode;
     }
