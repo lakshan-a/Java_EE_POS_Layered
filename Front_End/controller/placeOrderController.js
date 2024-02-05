@@ -156,6 +156,8 @@ $('#btnSubmitOrder').click(function(){
     let cusId = $('#orderCustomerID').val();
     let itemD = getItemDetails();
 
+
+
     let allData = {
         orderId : orderId,
         date : date,
@@ -170,7 +172,11 @@ $('#btnSubmitOrder').click(function(){
         data: JSON.stringify(allData),
         contentType: "application/json",
         success: function (resp) {
+            let valu = parseInt($('#txtCash').val());
+            let ordrtotal = parseInt($('#orderTotal').val());
 
+            $('#txtBalance').val("lakshan");
+            console.log(allData);
         },
         error: function (error) {
 
