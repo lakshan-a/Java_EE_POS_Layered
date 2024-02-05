@@ -5,6 +5,7 @@ import java.sql.Date;
 public class Orders {
 
     private String orderID;
+
     private String date;
     private String customerID;
 
