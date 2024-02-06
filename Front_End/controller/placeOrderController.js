@@ -1,3 +1,7 @@
+
+import { validated1, validated2, validated3, validated4, validated5, validated6, validated7, validated8, validated9, validated10, validated11 } from "./validations/OrderValidation.js";
+
+
 let allCustomers;
 let allItems;
 
@@ -74,6 +78,20 @@ $('#selectCusID').change(function() {
             $('#orderCustomerName').val(allCustomers[i].name);
             $('#orderCustomerAddress').val(allCustomers[i].address);
             $('#orderCustomerSalary').val(allCustomers[i].salary);
+
+            validated1();
+            validated2();
+            validated3();
+            validated4();
+            validated5();
+            validated6();
+            validated7();
+            validated8();
+            validated9();
+            validated10();
+            validated11();
+        } else {
+            console.log("No customer found with the specified ID");
         }
     }
 });
@@ -89,6 +107,20 @@ $('#selectItemCode').change(function() {
             $('#txtItemDescription').val(allItems[i].name)
             $('#txtItemPrice').val(allItems[i].price)
             $('#txtQTYOnHand').val(allItems[i].qty)
+
+            validated1();
+            validated2();
+            validated3();
+            validated4();
+            validated5();
+            validated6();
+            validated7();
+            validated8();
+            validated9();
+            validated10();
+            validated11();
+        } else {
+            console.log("No item found with the specified ID");
         }
     }
 });
