@@ -60,74 +60,74 @@ $("#txtDate").on('input', function (e) {
     }
 });
 
-$("#oCName").keyup(function (e) {
-    let value = $("#oCName").val();
+$("#orderCustomerName").keyup(function (e) {
+    let value = $("#orderCustomerName").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
         $("#btnSubmitOrder").attr('disabled', true);
-        $("#oCName").css('border', '1px solid #ced4da');
+        $("#orderCustomerName").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_NAME_REGEX.test(value);
         if (res) {
             validation3 = 1;
             setBtn();
-            $("#oCName").css('border', '2px solid green');
+            $("#orderCustomerName").css('border', '2px solid green');
         } else {
-            $("#oCName").css('border', '2px solid red');
+            $("#orderCustomerName").css('border', '2px solid red');
         }
     }
 });
 
-$("#oCAddress").keyup(function (e) {
-    let value = $("#oCAddress").val();
+$("#orderCustomerAddress").keyup(function (e) {
+    let value = $("#orderCustomerAddress").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
         $("#btnSubmitOrder").attr('disabled', true);
-        $("#oCAddress").css('border', '1px solid #ced4da');
+        $("#orderCustomerAddress").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_NAME_REGEX.test(value);
         if (res) {
             validation4 = 1;
             setBtn();
-            $("#oCAddress").css('border', '2px solid green');
+            $("#orderCustomerAddress").css('border', '2px solid green');
         } else {
-            $("#oCAddress").css('border', '2px solid red');
+            $("#orderCustomerAddress").css('border', '2px solid red');
         }
     }
 });
 
-$("#oCSalary").keyup(function (e) {
-    let value = $("#oCSalary").val();
+$("#orderCustomerSalary").keyup(function (e) {
+    let value = $("#orderCustomerSalary").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
         $("#btnSubmitOrder").attr('disabled', true);
-        $("#oCSalary").css('border', '1px solid #ced4da');
+        $("#orderCustomerSalary").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_SALARY_REGEX.test(value);
         if (res) {
             validation5 = 1;
             setBtn();
-            $("#oCSalary").css('border', '2px solid green');
+            $("#orderCustomerSalary").css('border', '2px solid green');
         } else {
-            $("#oCSalary").css('border', '2px solid red');
+            $("#orderCustomerSalary").css('border', '2px solid red');
         }
     }
 });
 
-$("#CustomerIDORderForm").keyup(function (e) {
-    let value = $("#CustomerIDORderForm").val();
+$("#orderCustomerID").keyup(function (e) {
+    let value = $("#orderCustomerID").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
         $("#btnSubmitOrder").attr('disabled', true);
-        $("#CustomerIDORderForm").css('border', '1px solid #ced4da');
+        $("#orderCustomerID").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_ID_REGEX.test(value);
         if (res) {
             validation6 = 1;
             setBtn();
-            $("#CustomerIDORderForm").css('border', '2px solid green');
+            $("#orderCustomerID").css('border', '2px solid green');
         } else {
-            $("#CustomerIDORderForm").css('border', '2px solid red');
+            $("#orderCustomerID").css('border', '2px solid red');
         }
     }
 });
