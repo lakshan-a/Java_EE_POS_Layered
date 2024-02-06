@@ -252,19 +252,19 @@ $("#txtCash").on("input", function (e) {
     }
 });
 
-$("#orderDiscountTxt").keyup(function (e) {
-    let value = $("#orderDiscountTxt").val();
+$("#txtDiscount").keyup(function (e) {
+    let value = $("#txtDiscount").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
         $("#btnSubmitOrder").attr('disabled', true);
-        $("#orderDiscountTxt").css('border', '1px solid #ced4da');
+        $("#txtDiscount").css('border', '1px solid #ced4da');
     } else {
         let res = numbersOnlyRegex.test(value);
         if (res) {
             setBtn();
-            $("#orderDiscountTxt").css('border', '2px solid green');
+            $("#txtDiscount").css('border', '2px solid green');
         } else {
-            $("#orderDiscountTxt").css('border', '2px solid red');
+            $("#txtDiscount").css('border', '2px solid red');
         }
     }
 });
