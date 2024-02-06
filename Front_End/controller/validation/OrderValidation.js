@@ -132,20 +132,20 @@ $("#orderCustomerID").keyup(function (e) {
     }
 });
 
-$("#itemID").on("input", function (e) {
-    let value = $("#itemID").val();
+$("#selectItemCode").on("input", function (e) {
+    let value = $("#selectItemCode").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
         $("#btnSubmitOrder").attr('disabled', true);
-        $("#itemID").css('border', '1px solid #ced4da');
+        $("#selectItemCode").css('border', '1px solid #ced4da');
     } else {
         let res = ITEM_ID_REGEX.test(value);
         if (res) {
             validation7 = 1;
             setBtn();
-            $("#itemID").css('border', '2px solid green');
+            $("#selectItemCode").css('border', '2px solid green');
         } else {
-            $("#itemID").css('border', '2px solid red');
+            $("#selectItemCode").css('border', '2px solid red');
         }
     }
 });
