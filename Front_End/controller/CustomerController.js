@@ -127,11 +127,15 @@ $('#btnCusUpdate').click(function () {
         },
         success : function() {
             loadAllCus();
+            // saveUpdateAlert(CustomerId, "updated.");
+
         },
         error: function ( error) {
             console.log("error: ", error);
         }
-    })
+
+})
+
 });
 
 $('#btnCusDelete').click(function () {

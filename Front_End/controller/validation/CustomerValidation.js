@@ -9,8 +9,8 @@ var validationAddress;
 var validationSalary;
 
 
-$("#btnCusAdd").attr('disabled',true);
-$("#btnCusUpdate").attr('disabled',true);
+// $("#btnCusAdd").attr('disabled',true);
+// $("#btnCusUpdate").attr('disabled',true);
 
 $("#txtCustomerID").keyup(function (e) {
     let value = $("#txtCustomerID").val();
