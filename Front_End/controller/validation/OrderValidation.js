@@ -187,11 +187,11 @@ $("#txtQTYOnHand").keyup(function (e) {
     }
 });
 
-$("#oqty").keyup(function (e) {
-    let value = $("#oqty").val();
+$("#txtQty").keyup(function (e) {
+    let value = $("#txtQty").val();
 
     // Reset border and validation
-    $("#oqty").css('border', '1px solid #ced4da');
+    $("#txtQty").css('border', '1px solid #ced4da');
     validation10 = 0;
 
     if (value.length == 0) {
@@ -201,35 +201,35 @@ $("#oqty").keyup(function (e) {
         let res = numbersOnlyRegex.test(value);
         if (res) {
             let oQty = parseInt(value);
-            let iQty = parseInt($("#iOQty").val());
+            let iQty = parseInt($("#txtQty").val());
 
             if (!isNaN(iQty) && oQty <= iQty) {
                 validation10 = 1;
                 setBtn();
-                $("#oqty").css('border', '2px solid green');
+                $("#txtQty").css('border', '2px solid green');
             } else {
-                $("#oqty").css('border', '2px solid red');
+                $("#txtQty").css('border', '2px solid red');
             }
         } else {
-            $("#oqty").css('border', '2px solid red');
+            $("#txtQty").css('border', '2px solid red');
         }
     }
 });
 
-$("#ItemNameOrder").keyup(function (e) {
-    let value = $("#ItemNameOrder").val();
+$("#txtItemDescription").keyup(function (e) {
+    let value = $("#txtItemDescription").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
         $("#btnSubmitOrder").attr('disabled', true);
-        $("#ItemNameOrder").css('border', '1px solid #ced4da');
+        $("#txtItemDescription").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_NAME_REGEX.test(value);
         if (res) {
             validation11 = 1;
             setBtn();
-            $("#ItemNameOrder").css('border', '2px solid green');
+            $("#txtItemDescription").css('border', '2px solid green');
         } else {
-            $("#ItemNameOrder").css('border', '2px solid red');
+            $("#txtItemDescription").css('border', '2px solid red');
         }
     }
 });
