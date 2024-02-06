@@ -8,7 +8,7 @@ const ITEM_ID_REGEX = /^(P)[0-9]{3}$/;
 
 
 $("#btnAddToTable").attr('disabled',true);
-$("#oSaveBtn").attr('disabled',true);
+$("#btnSubmitOrder").attr('disabled',true);
 
 var validation1;
 var validation2;
@@ -28,7 +28,7 @@ $("#oId").keyup(function (e) {
     let value = $("#oId").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#oId").css('border', '1px solid #ced4da');
     } else {
         let res = ORDER_ID_REGEX.test(value);
@@ -46,7 +46,7 @@ $("#date").on('input', function (e) {
     let value = $("#date").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#date").css('border', '1px solid #ced4da');
     } else {
         let res = ORDER_DATE_REGEX.test(value);
@@ -64,7 +64,7 @@ $("#oCName").keyup(function (e) {
     let value = $("#oCName").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#oCName").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_NAME_REGEX.test(value);
@@ -82,7 +82,7 @@ $("#oCAddress").keyup(function (e) {
     let value = $("#oCAddress").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#oCAddress").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_NAME_REGEX.test(value);
@@ -100,7 +100,7 @@ $("#oCSalary").keyup(function (e) {
     let value = $("#oCSalary").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#oCSalary").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_SALARY_REGEX.test(value);
@@ -118,7 +118,7 @@ $("#CustomerIDORderForm").keyup(function (e) {
     let value = $("#CustomerIDORderForm").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#CustomerIDORderForm").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_ID_REGEX.test(value);
@@ -136,7 +136,7 @@ $("#itemID").on("input", function (e) {
     let value = $("#itemID").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#itemID").css('border', '1px solid #ced4da');
     } else {
         let res = ITEM_ID_REGEX.test(value);
@@ -155,7 +155,7 @@ $("#iOPrice").on("input", function (e) {
     let value = $("#iOPrice").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#iOPrice").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_SALARY_REGEX.test(value);
@@ -173,7 +173,7 @@ $("#iOQty").keyup(function (e) {
     let value = $("#iOQty").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#iOQty").css('border', '1px solid #ced4da');
     } else {
         let res = numbersOnlyRegex.test(value);
@@ -196,7 +196,7 @@ $("#oqty").keyup(function (e) {
 
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
     } else {
         let res = numbersOnlyRegex.test(value);
         if (res) {
@@ -220,7 +220,7 @@ $("#ItemNameOrder").keyup(function (e) {
     let value = $("#ItemNameOrder").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#ItemNameOrder").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_NAME_REGEX.test(value);
@@ -239,7 +239,7 @@ $("#orderCashTxt").on("input", function (e) {
     let value = $("#orderCashTxt").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#orderCashTxt").css('border', '1px solid #ced4da');
     } else {
         let res = numbersOnlyRegex.test(value);
@@ -256,7 +256,7 @@ $("#orderDiscountTxt").keyup(function (e) {
     let value = $("#orderDiscountTxt").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#orderDiscountTxt").css('border', '1px solid #ced4da');
     } else {
         let res = numbersOnlyRegex.test(value);
@@ -273,7 +273,7 @@ $("#orderBalanceTxt").keyup(function (e) {
     let value = $("#orderBalanceTxt").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#orderBalanceTxt").css('border', '1px solid #ced4da');
     } else {
         let res = numbersOnlyRegex.test(value);
@@ -293,7 +293,7 @@ $("#orderBalanceTxt").keyup(function (e) {
 function setBtn() {
     if (validation1 == 1 && validation2 == 1 && validation3 == 1 && validation4 == 1 && validation5 == 1 && validation6 == 1 && validation7 == 1 && validation8 == 1 && validation9 == 1 && validation10 == 1 && validation11 == 1) {
         $("#btnAddToTable").attr('disabled', false);
-        $("#oSaveBtn").attr('disabled', false);
+        $("#btnSubmitOrder").attr('disabled', false);
     }
 }
 
@@ -302,7 +302,7 @@ export function validated1() {
     let value = $("#oId").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#oId").css('border', '1px solid #ced4da');
     } else {
         let res = ORDER_ID_REGEX.test(value);
@@ -319,7 +319,7 @@ export function validated2() {
     let value = $("#date").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#date").css('border', '1px solid #ced4da');
     } else {
         let res = ORDER_DATE_REGEX.test(value);
@@ -336,7 +336,7 @@ export function validated3() {
     let value = $("#oCName").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#oCName").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_NAME_REGEX.test(value);
@@ -353,7 +353,7 @@ export function validated4() {
     let value = $("#oCAddress").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#oCAddress").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_NAME_REGEX.test(value);
@@ -372,7 +372,7 @@ export function validated5() {
     let value = $("#oCSalary").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#oCSalary").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_SALARY_REGEX.test(value);
@@ -389,7 +389,7 @@ export function validated6() {
     let value = $("#CustomerIDORderForm").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#CustomerIDORderForm").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_ID_REGEX.test(value);
@@ -406,7 +406,7 @@ export function validated7() {
     let value = $("#itemID").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#itemID").css('border', '1px solid #ced4da');
     } else {
         let res = ITEM_ID_REGEX.test(value);
@@ -423,7 +423,7 @@ export function validated8() {
     let value = $("#iOPrice").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#iOPrice").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_SALARY_REGEX.test(value);
@@ -440,7 +440,7 @@ export function validated9() {
     let value = $("#iOQty").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#iOQty").css('border', '1px solid #ced4da');
     } else {
         let res = numbersOnlyRegex.test(value);
@@ -457,7 +457,7 @@ export function validated10() {
     let value = $("#oqty").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#oqty").css('border', '1px solid #ced4da');
     } else {
         let res = numbersOnlyRegex.test(value);
@@ -478,7 +478,7 @@ export function validated11() {
     let value = $("#ItemNameOrder").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
-        $("#oSaveBtn").attr('disabled', true);
+        $("#btnSubmitOrder").attr('disabled', true);
         $("#ItemNameOrder").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_NAME_REGEX.test(value);
