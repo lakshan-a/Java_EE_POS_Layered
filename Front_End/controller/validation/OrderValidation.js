@@ -234,20 +234,20 @@ $("#txtItemDescription").keyup(function (e) {
     }
 });
 
-$("#orderCashTxt").on("input", function (e) {
+$("#txtCash").on("input", function (e) {
     balanceCheck();
-    let value = $("#orderCashTxt").val();
+    let value = $("#txtCash").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
         $("#btnSubmitOrder").attr('disabled', true);
-        $("#orderCashTxt").css('border', '1px solid #ced4da');
+        $("#txtCash").css('border', '1px solid #ced4da');
     } else {
         let res = numbersOnlyRegex.test(value);
         if (res) {
             setBtn();
-            $("#orderCashTxt").css('border', '2px solid green');
+            $("#txtCash").css('border', '2px solid green');
         } else {
-            $("#orderCashTxt").css('border', '2px solid red');
+            $("#txtCash").css('border', '2px solid red');
         }
     }
 });
