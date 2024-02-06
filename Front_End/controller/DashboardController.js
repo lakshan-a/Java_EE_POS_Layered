@@ -81,3 +81,4 @@ $("#lnkOrders").click(function () {
 $("#lnkOrderDetail").click(function () {
     setView($("#orderDetailContent"));
 });
+

@@ -59,16 +59,7 @@ function Getall(){
     })
 }
 
-function generateCustomerID() {
-    if (customers.length > 0) {
-        let lastId = customers[customers.length - 1].id;
-        let digit = lastId.substring(6);
-        let number = parseInt(digit) + 1;
-        return lastId.replace(digit, number);
-    } else {
-        return "C001";
-    }
-}
+
 
 $('#btnCusAdd').click(function () {
 
@@ -102,7 +93,6 @@ $('#btnCusAdd').click(function () {
         },
         success : function() {
             loadAllCus();
-            $("#txtCustomerID").val(generateCustomerID());
         },
         error: function (error) {
             console.log("error: ", error);
