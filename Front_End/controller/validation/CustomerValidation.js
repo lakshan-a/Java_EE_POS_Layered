@@ -1,4 +1,4 @@
-const CUS_ID_REGEX = /^(c00-)[0-9]{3}$/;
+const CUS_ID_REGEX = /^(C)[0-9]{3}$/;
 const CUS_NAME_REGEX = /^[A-Za-z ]{5,}$/;
 const CUS_ADDRESS_REGEX = /^[A-Za-z0-9 ]{5,}$/;
 const CUS_SALARY_REGEX = /^[0-9]{2,}([.][0-9]{2})?$/;
@@ -9,29 +9,29 @@ var validationAddress;
 var validationSalary;
 
 
-// $("#btnCusAdd").attr('disabled',true);
+$("#btnCusAdd").attr('disabled',true);
 $("#btnCusUpdate").attr('disabled',true);
 
-// $("#txtCustomerID").keyup(function (e) {
-//     let value = $("#txtCustomerID").val();
-//     if (value.length == 0) {
-//         $("#btnCusAdd").attr('disabled',true);
-//         $("#txtCustomerID").css('border', '1px solid #ced4da');
-//     } else {
-//         let res = CUS_ID_REGEX.test(value);
-//         if (res) {
-//             validationId =1;
-//             setBtn();
-//             $("#txtCustomerID").css('border', '2px solid green');
-//         } else {
-//             $("#txtCustomerID").css('border', '2px solid red');
-//         }
-//     }});
+$("#txtCustomerID").keyup(function (e) {
+    let value = $("#txtCustomerID").val();
+    if (value.length == 0) {
+        $("#btnCusAdd").attr('disabled',true);
+        $("#txtCustomerID").css('border', '1px solid #ced4da');
+    } else {
+        let res = CUS_ID_REGEX.test(value);
+        if (res) {
+            validationId =1;
+            setBtn();
+            $("#txtCustomerID").css('border', '2px solid green');
+        } else {
+            $("#txtCustomerID").css('border', '2px solid red');
+        }
+    }});
 
 $("#txtCustomerName").keyup(function (e) {
     let value = $("#txtCustomerName").val();
     if (value.length == 0) {
-        // $("#btnCusAdd").attr('disabled',true);
+        $("#btnCusAdd").attr('disabled',true);
         $("#txtCustomerName").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_NAME_REGEX.test(value);
@@ -47,7 +47,7 @@ $("#txtCustomerName").keyup(function (e) {
 $("#txtCustomerAddress").keyup(function (e) {
     let value = $("#txtCustomerAddress").val();
     if (value.length == 0) {
-        // $("#btnCusAdd").attr('disabled',true);
+        $("#btnCusAdd").attr('disabled',true);
         $("#txtCustomerAddress").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_ADDRESS_REGEX.test(value);
@@ -63,7 +63,7 @@ $("#txtCustomerAddress").keyup(function (e) {
 $("#txtCustomerSalary").keyup(function (e) {
     let value = $("#txtCustomerSalary").val();
     if (value.length == 0) {
-        // $("#btnCusAdd").attr('disabled',true);
+        $("#btnCusAdd").attr('disabled',true);
         $("#txtCustomerSalary").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_SALARY_REGEX.test(value);
