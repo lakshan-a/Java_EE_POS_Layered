@@ -1,4 +1,4 @@
-const CUS_ID_REGEX = /^(C)[0-9]{2}$/;
+const CUS_ID_REGEX = /^(C)[0-9]{3}$/;
 const CUS_NAME_REGEX = /^[A-Za-z ]{5,}$/;
 const CUS_ADDRESS_REGEX = /^[A-Za-z0-9 ]{5,}$/;
 const CUS_SALARY_REGEX = /^[0-9]{2,}([.][0-9]{2})?$/;
@@ -14,7 +14,7 @@ $("#btnCusUpdate").attr('disabled',true);
 
 $("#txtCustomerID").keyup(function (e) {
     let value = $("#txtCustomerID").val();
-    if (value.length == 0) {
+    if (value.length == 1) {
         $("#btnCusAdd").attr('disabled',true);
         $("#txtCustomerID").css('border', '1px solid #ced4da');
     } else {
@@ -75,6 +75,7 @@ $("#txtCustomerSalary").keyup(function (e) {
             $("#txtCustomerSalary").css('border', '2px solid red');
         }
     }});
+
 
 function setBtn() {
     if (validationId==1 && validationName==1 && validationAddress==1 && validationSalary==1){

@@ -5,8 +5,8 @@ const ITEM_SALARY_REGEX = /^[0-9]{2,}([.][0-9]{2})?$/;
 
 var validationId;
 var validationName;
-var validationAddress;
-var validationSalary;
+var validationPrice;
+var validationQTY;
 
 
 $("#btnItemAdd").attr('disabled',true);
@@ -52,7 +52,7 @@ $("#itemPrice").keyup(function (e) {
     } else {
         let res = ITEM_SALARY_REGEX.test(value);
         if (res) {
-            validationAddress=1;
+            validationPrice=1;
             setBtn();
             $("#itemPrice").css('border', '2px solid green');
         } else {
@@ -68,7 +68,7 @@ $("#itemQty").keyup(function (e) {
     } else {
         let res = numbersOnlyRegex.test(value);
         if (res) {
-            validationSalary=1;
+            validationQTY=1;
             setBtn();
             $("#itemQty").css('border', '2px solid green');
         } else {
@@ -78,7 +78,7 @@ $("#itemQty").keyup(function (e) {
 
 
 function setBtn() {
-    if (validationId==1 && validationName==1 && validationAddress==1 && validationSalary==1){
+    if (validationId==1 && validationName==1 && validationPrice==1 && validationQTY==1){
         $("#btnItemAdd").attr('disabled',false);
         $("#btnItemUpdate").attr('disabled',false);
     }

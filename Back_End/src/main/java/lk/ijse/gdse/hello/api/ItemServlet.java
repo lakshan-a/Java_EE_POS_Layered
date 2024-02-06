@@ -72,27 +72,29 @@ public class ItemServlet extends HttpServlet {
 
         resp.addHeader("Access-Control-Allow-Origin","*");
 
-        jakarta.servlet.ServletContext servletContext = getServletContext();
+
+        ServletContext servletContext = getServletContext();
         BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
 
-        String code = req.getParameter("code");
-        String name = req.getParameter("name");
-        Double price = Double.valueOf(req.getParameter("price"));
-        int qty = Integer.parseInt(req.getParameter("qty"));
 
-        System.out.printf("code=%s ,name=%s ,price=%s ,qty=%s\n" , code,name,price,qty);
+        String id = req.getParameter("id");
+        String name = req.getParameter("name");
+        String address = req.getParameter("address");
+        String salary = req.getParameter("salary");
+
+        System.out.printf("id=%s ,name=%s ,address=%s\n" , id,name,address);
+
 
         try (Connection connection = pool.getConnection()){
-            PreparedStatement stn = connection.prepareStatement("INSERT INTO item(code,description,unitPrice,qtyOnHand) VALUES(?,?,?,?)");
+            PreparedStatement stn = connection.prepareStatement("INSERT INTO customer(id,name,address,salary) VALUES(?,?,?,?)");
 
-            stn.setString(1,code);
+            stn.setString(1,id);
             stn.setString(2,name);
-            stn.setDouble(3,price);
-            stn.setInt(4,qty);
+            stn.setString(3,address);
+            stn.setString(4,salary);
 
             stn.executeUpdate();
             resp.getWriter().write("print!!");
-
 
         } catch (Exception e) {
             e.printStackTrace();

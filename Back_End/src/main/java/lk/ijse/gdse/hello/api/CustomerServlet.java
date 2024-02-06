@@ -84,18 +84,6 @@ public class CustomerServlet extends HttpServlet {
 
         System.out.printf("id=%s ,name=%s ,address=%s ,salary=%s\n" , id,name,address,salary);
 
-//        if(id==null || !id.matches("C\\d{3}")){
-//            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "ID is empty or invalid");
-//            return;
-//        } else if (name == null || !name.matches("[A-Za-z ]+")) {
-//            resp.sendError(HttpServletResponse.SC_BAD_REQUEST, "Name is empty or invalid");
-//            return;
-//        } else if (address == null || address.length() < 3) {
-//            resp.sendError(HttpServletResponse.SC_BAD_REQUEST,"Address is empty or invalid");
-//        return;
-//        }
-
-
 
         try (Connection connection = pool.getConnection()){
             PreparedStatement stn = connection.prepareStatement("INSERT INTO customer(id,name,address,salary) VALUES(?,?,?,?)");
@@ -105,15 +93,8 @@ public class CustomerServlet extends HttpServlet {
             stn.setString(3,address);
             stn.setString(4,salary);
 
-//            stn.executeUpdate();
-//            resp.getWriter().write("print!!");
-
-            if (stn.executeUpdate() != 0) {
-                resp.setStatus(HttpServletResponse.SC_CREATED);
-                resp.getWriter().write("Added customer successfully");
-            }else {
-                resp.sendError(javax.servlet.http.HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Failed to save the customer");
-            }
+            stn.executeUpdate();
+            resp.getWriter().write("print!!");
 
         } catch (Exception e) {
             e.printStackTrace();
