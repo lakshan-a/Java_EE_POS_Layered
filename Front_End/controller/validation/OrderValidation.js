@@ -169,20 +169,20 @@ $("#txtItemPrice").on("input", function (e) {
     }
 });
 
-$("#iOQty").keyup(function (e) {
-    let value = $("#iOQty").val();
+$("#txtQTYOnHand").keyup(function (e) {
+    let value = $("#txtQTYOnHand").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
         $("#btnSubmitOrder").attr('disabled', true);
-        $("#iOQty").css('border', '1px solid #ced4da');
+        $("#txtQTYOnHand").css('border', '1px solid #ced4da');
     } else {
         let res = numbersOnlyRegex.test(value);
         if (res) {
             validation9 = 1;
             setBtn();
-            $("#iOQty").css('border', '2px solid green');
+            $("#txtQTYOnHand").css('border', '2px solid green');
         } else {
-            $("#iOQty").css('border', '2px solid red');
+            $("#txtQTYOnHand").css('border', '2px solid red');
         }
     }
 });
