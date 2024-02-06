@@ -67,6 +67,7 @@ $("#lnkHome").click(function () {
 
 $("#lnkCustomer").click(function () {
     setView($("#customerContent"));
+    $("#txtCustomerId").val(generateCustomerID());
 });
 
 $("#lnkItem").click(function () {
