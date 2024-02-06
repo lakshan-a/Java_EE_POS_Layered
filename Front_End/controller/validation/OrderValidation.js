@@ -151,20 +151,20 @@ $("#txtItemCode").on("input", function (e) {
 });
 
 
-$("#iOPrice").on("input", function (e) {
-    let value = $("#iOPrice").val();
+$("#txtItemPrice").on("input", function (e) {
+    let value = $("#txtItemPrice").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
         $("#btnSubmitOrder").attr('disabled', true);
-        $("#iOPrice").css('border', '1px solid #ced4da');
+        $("#txtItemPrice").css('border', '1px solid #ced4da');
     } else {
         let res = CUS_SALARY_REGEX.test(value);
         if (res) {
             validation8 = 1;
             setBtn();
-            $("#iOPrice").css('border', '2px solid green');
+            $("#txtItemPrice").css('border', '2px solid green');
         } else {
-            $("#iOPrice").css('border', '2px solid red');
+            $("#txtItemPrice").css('border', '2px solid red');
         }
     }
 });
