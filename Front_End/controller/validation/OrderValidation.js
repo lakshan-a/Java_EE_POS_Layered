@@ -24,38 +24,38 @@ var validation11;
 
 
 
-$("#oId").keyup(function (e) {
-    let value = $("#oId").val();
+$("#txtOrderID").keyup(function (e) {
+    let value = $("#txtOrderID").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
         $("#btnSubmitOrder").attr('disabled', true);
-        $("#oId").css('border', '1px solid #ced4da');
+        $("#txtOrderID").css('border', '1px solid #ced4da');
     } else {
         let res = ORDER_ID_REGEX.test(value);
         if (res) {
             setBtn();
-            $("#oId").css('border', '2px solid green');
+            $("#txtOrderID").css('border', '2px solid green');
             validation1 = 1;
         } else {
-            $("#oId").css('border', '2px solid red');
+            $("#txtOrderID").css('border', '2px solid red');
         }
     }
 });
 
-$("#date").on('input', function (e) {
-    let value = $("#date").val();
+$("#txtDate").on('input', function (e) {
+    let value = $("#txtDate").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
         $("#btnSubmitOrder").attr('disabled', true);
-        $("#date").css('border', '1px solid #ced4da');
+        $("#txtDate").css('border', '1px solid #ced4da');
     } else {
         let res = ORDER_DATE_REGEX.test(value);
         if (res) {
             validation2 = 1;
             setBtn();
-            $("#date").css('border', '2px solid green');
+            $("#txtDate").css('border', '2px solid green');
         } else {
-            $("#date").css('border', '2px solid red');
+            $("#txtDate").css('border', '2px solid red');
         }
     }
 });
@@ -298,12 +298,12 @@ function setBtn() {
 }
 
 
-export function validated1() {
+/*export function validated1() {
     let value = $("#oId").val();
     if (value.length == 0) {
         $("#btnAddToTable").attr('disabled', true);
         $("#btnSubmitOrder").attr('disabled', true);
-        $("#oId").css('border', '1px solid #ced4da');
+        $("#txtOrderID").css('border', '1px solid #ced4da');
     } else {
         let res = ORDER_ID_REGEX.test(value);
         if (res) {
@@ -490,7 +490,7 @@ export function validated11() {
             $("#ItemNameOrder").css('border', '2px solid red');
         }
     }
-}
+}*/
 
 
 function balanceCheck() {
