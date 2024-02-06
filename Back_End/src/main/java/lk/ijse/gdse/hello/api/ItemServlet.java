@@ -93,6 +93,7 @@ public class ItemServlet extends HttpServlet {
             stn.executeUpdate();
             resp.getWriter().write("print!!");
 
+
         } catch (Exception e) {
             e.printStackTrace();
         }

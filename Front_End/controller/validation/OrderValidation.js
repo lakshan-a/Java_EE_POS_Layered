@@ -1,3 +1,4 @@
+/*
 const ORDER_ID_REGEX = /^(O)[0-9]{3}$/;
 const ORDER_DATE_REGEX = /^\d{4}-\d{2}-\d{2}$/;
 const numbersOnlyRegex = /^[0-9]+$/;
@@ -309,4 +310,43 @@ function setBtn() {
 //
 // }
 
+
+*/
+
+const ORDER_ID_REGEX = /^(D)[0-9]{2}$/;
+
+
+var validationId;
+
+
+
+// $("#btnCusAdd").attr('disabled',true);
+// $("#btnCusUpdate").attr('disabled',true);
+
+
+$("#btnAddToTable").attr('disabled',true);
+$("#btnSubmitOrder").attr('disabled',true);
+
+$("#txtOrderID").keyup(function (e) {
+    let value = $("#txtOrderID").val();
+    if (value.length == 0) {
+        $("#btnCusAdd").attr('disabled',true);
+        $("#txtOrderID").css('border', '1px solid #ced4da');
+    } else {
+        let res = ORDER_ID_REGEX.test(value);
+        if (res) {
+            validationId =1;
+            setBtn();
+            $("#txtOrderID").css('border', '2px solid green');
+        } else {
+            $("#txtOrderID").css('border', '2px solid red');
+        }
+    }});
+
+function setBtn() {
+    if (validationId==1 ){
+        $("#btnAddToTable").attr('disabled',false);
+        $("#btnSubmitOrder").attr('disabled',false);
+    }
+}
 

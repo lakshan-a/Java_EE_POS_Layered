@@ -91,10 +91,13 @@ $('#btnItemAdd').click(function () {
         },
         success : function() {
             loadAllItems();
+            alert("Item has been saved successfully");
+
         },
-        error: function (error) {
-            console.log("error: ", error);
-        }
+        error: function (data) {
+            console.error(data);
+            alert("Failed to save the item");
+        },
     })
 
 });
