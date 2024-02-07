@@ -9,8 +9,8 @@ var validationAddress;
 var validationSalary;
 
 
-// $("#btnCusAdd").attr('disabled',true);
-// $("#btnCusUpdate").attr('disabled',true);
+$("#btnCusAdd").attr('disabled',true);
+$("#btnCusUpdate").attr('disabled',true);
 
 $("#txtCustomerID").keyup(function (e) {
     let value = $("#txtCustomerID").val();
@@ -70,6 +70,8 @@ $("#txtCustomerSalary").keyup(function (e) {
         if (res) {
             validationSalary=1;
             setBtn();
+            $("#btnCusAdd").attr('disabled',false);
+            $("#btnCusUpdate").attr('disabled',false);
             $("#txtCustomerSalary").css('border', '2px solid green');
         } else {
             $("#txtCustomerSalary").css('border', '2px solid red');
