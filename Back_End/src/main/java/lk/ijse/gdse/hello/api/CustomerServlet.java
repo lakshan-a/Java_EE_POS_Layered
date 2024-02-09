@@ -113,6 +113,9 @@ public class CustomerServlet extends HttpServlet {
         String address = jsonObject.getString("address");
         Double salary = Double.valueOf(jsonObject.getString("salary"));
 
+        resp.addHeader("Access-Control-Allow-Origin", "*");
+        resp.addHeader("Access-Control-Allow-Methods", "DELETE,PUT,GET");
+        resp.addHeader("Access-Control-Allow-Headers", "Content-Type");
 
         ServletContext servletContext = getServletContext();
         BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
