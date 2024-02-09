@@ -113,9 +113,6 @@ public class CustomerServlet extends HttpServlet {
         String address = jsonObject.getString("address");
         Double salary = Double.valueOf(jsonObject.getString("salary"));
 
-        resp.addHeader("Access-Control-Allow-Origin", "*");
-        resp.addHeader("Access-Control-Allow-Methods", "DELETE,PUT,GET");
-        resp.addHeader("Access-Control-Allow-Headers", "Content-Type");
 
         ServletContext servletContext = getServletContext();
         BasicDataSource pool = (BasicDataSource) servletContext.getAttribute("dbcp");
@@ -132,12 +129,20 @@ public class CustomerServlet extends HttpServlet {
             stn.setDouble(3,salary);
             stn.setString(4,id);
 
-            stn.executeUpdate();
-            resp.getWriter().write("print!!");
+//            stn.executeUpdate();
+//            resp.getWriter().write("print!!");
+
+            if (stn.executeUpdate() != 0) {
+                resp.setStatus(javax.servlet.http.HttpServletResponse.SC_CREATED);
+                resp.getWriter().write("Added customer successfully");
+            }else {
+                resp.sendError(javax.servlet.http.HttpServletResponse.SC_INTERNAL_SERVER_ERROR, "Failed to save the customer");
+            }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     @Override
