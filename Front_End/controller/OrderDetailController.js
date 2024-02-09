@@ -1,24 +1,31 @@
-loadOrderDetail();
+let baseUrl = "http://localhost:8080/app/orders";
 
-function loadOrderDetail(){
+loadAllOrderDetails();
 
+
+function loadAllOrderDetails() {
+    $("#tblOrderDetails").empty();
     $.ajax({
-        // url : "http://localhost:8080/app/orders",
-        success : function(res){
-            let orderDetail = $(res);
-            $('#orderDetailTable').empty();
+        url: baseUrl + "orders?option=LoadOrderDetails",
+        method: "GET",
+        dataType: "json",
+        success: function (res) {
+            console.log(res);
 
-            for(let i = 0; i < orderDetail.length; i++){
-                let orderId = orderDetail[i].orderId;
-                let id = orderDetail[i].id;
-                let total = orderDetail[i].total;
-                let qty = orderDetail[i].qty;
-                let date = orderDetail[i].date;
+            for (let i of res.data) {
+                let OrderId = i.OrderId;
+                let code = i.code;
+                let qty = i.qty;
+                let unitPrice = i.unitPrice;
 
-                let row =`<tr><td>${orderId}</td><td>${id}</td><td>${total}</td><td>${qty}</td><td>${date}</td></tr>`;
-                $('#orderDetailTable').append(row);
+                let row = "<tr><td>" + OrderId + "</td><td>" + code + "</td><td>" + qty + "</td><td>" + unitPrice + "</td></tr>";
+                $("#tblOrderDetails").append(row);
             }
+            console.log(res.message);
+        },
+        error: function (error) {
+            let message = JSON.parse(error.responseText).message;
+            console.log(message);
         }
     });
-
 }

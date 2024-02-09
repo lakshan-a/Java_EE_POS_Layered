@@ -52,6 +52,7 @@ public class CustomerServlet extends HttpServlet {
 
                 allCustomers.add(customer.build());
             }
+
 //            Json json = JsonBuilder.create();
 //            jsonb.toJson(customerList,resp.getWriter());
 
@@ -99,6 +100,8 @@ public class CustomerServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
 
     }
 

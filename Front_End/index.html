@@ -404,24 +404,23 @@
         <h1>Order Details</h1>
 
         <!--main tile-->
-        <div class="jumbotron pt-4">
-            <!--order Detail table-->
-            <div class="col-md-12 mt-4" style="height:180px; overflow-y: scroll">
-                <table class="table table-bordered text-white">
-                    <thead class="bg-primary">
+        <div class="col-11 justify-content-around sectionBorder mb-5" style="background: white">
+            <h5 class="text-center p-2 text-light rounded-3 mt-3" style="background: dodgerblue">Order
+                Details</h5>
+            <div class="customerTableDiv">
+                <table class="table table-bordered mt-3">
+                    <thead class="text-light table-dark text-center table-bordered">
                     <tr>
-                        <th>Order ID</th>
-                        <th>Customer Id</th>
-                        <th>Total</th>
-                        <th>QTY</th>
-                        <th>Date</th>
+                        <th class="w-25">Order ID</th>
+                        <th class="w-25">Item Code</th>
+                        <th class="w-25">Qty</th>
+                        <th class="w-25">Total</th>
                     </tr>
                     </thead>
-                    <tbody class="bg-light text-dark" id="orderDetailTable">
-
-                    </tbody >
+                    <tbody id="tblOrderDetails"></tbody>
                 </table>
             </div>
+        </div>
             <!---------->
         </div>
     </div>
@@ -442,8 +441,8 @@
 
 <script src="controller/validation/CustomerValidation.js"></script>
 <script src="controller/validation/ItemValidation.js"></script>
-<!--<script src="controller/validation/OrderValidation.js"></script>-->
-<!--<script src="controller/validation/OrderValidation.js"></script>-->
+<script src="controller/validation/OrderValidation.js"></script>
+<script src="controller/validation/OrderValidation.js"></script>
 <script src="util/Alert.js"></script>
 
 
