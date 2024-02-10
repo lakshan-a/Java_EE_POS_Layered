@@ -23,4 +23,8 @@ public class CORSFilter extends HttpFilter {
         res.addHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT, OPTION, HEAD");
         chain.doFilter(req,res);
     }
+    @Override
+    public void destroy() {
+
+    }
 }
