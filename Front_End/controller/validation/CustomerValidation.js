@@ -11,8 +11,8 @@ var validationSalary;
 let customerNumberCounter = 1;
 let customerIDstor;
 
-generateCustomerID();
-function generateCustomerID() {
+generateID();
+function generateID() {
     const customerID = `C${String(customerNumberCounter).padStart(3, '0')}`;
     customerNumberCounter++;
     customerIDstor = customerID;

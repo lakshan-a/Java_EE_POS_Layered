@@ -8,6 +8,17 @@ var validationName;
 var validationPrice;
 var validationQTY;
 
+let itemNumberCounter = 1;
+let itemIDstor;
+
+generateItemID();
+function generateItemID() {
+    const itemCode = `P${String(itemNumberCounter).padStart(3, '0')}`;
+    itemNumberCounter++;
+    itemIDstor = itemCode;
+    $("#itemCode").val(itemCode);
+}
+
 
 $("#btnItemAdd").attr('disabled',true);
 $("#btnItemUpdate").attr('disabled',true);
