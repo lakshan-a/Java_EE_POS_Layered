@@ -10,7 +10,7 @@
 // }
 
 function clearAllbutton() {
-    $('#selectCusID,#orderCustomerID,#orderCustomerName ,#orderCustomerSalary ,#orderCustomerAddress ,#selectItemCode,#txtItemCode ,#txtItemDescription ,#txtItemPrice ,#txtQTYOnHand ,#txtQty ,#total ,#subtotal').val('');
+    $('#txtOrderID, #txtDate,#selectCusID,#orderCustomerID,#orderCustomerName ,#orderCustomerSalary ,#orderCustomerAddress ,#selectItemCode,#txtItemCode ,#txtItemDescription ,#txtItemPrice ,#txtQTYOnHand ,#txtQty ,#total ,#subtotal,#orderTable').val('');
     finalTotal = 0;
     final = 0;
     $('#btnAddToTable').prop("disabled", true);
