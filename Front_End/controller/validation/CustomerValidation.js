@@ -8,16 +8,16 @@ var validationName;
 var validationAddress;
 var validationSalary;
 
-// let customerNumberCounter = 1;
-// let customerIDstor;
-//
-// generateID();
-// function generateID() {
-//     const customerID = `C${String(customerNumberCounter).padStart(3, '0')}`;
-//     customerNumberCounter++;
-//     customerIDstor = customerID;
-//     $("#txtCustomerID").val(customerID);
-// }
+let customerNumberCounter = 1;
+let customerIDstor;
+
+generateID();
+function generateID() {
+    const customerID = `C${String(customerNumberCounter).padStart(3, '0')}`;
+    customerNumberCounter++;
+    customerIDstor = customerID;
+    $("#txtCustomerID").val(customerID);
+}
 
 function clearCustomerInputFields() {
     $("#txtCustomerID,#txtCustomerName,#txtCustomerAddress,#txtCustomerSalary").val("");
