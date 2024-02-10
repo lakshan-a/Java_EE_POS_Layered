@@ -47,6 +47,7 @@ function setTheLastView() {
             break;
         default:
             setView($("#dashboardContent"));
+            break;
     }
 }
 
