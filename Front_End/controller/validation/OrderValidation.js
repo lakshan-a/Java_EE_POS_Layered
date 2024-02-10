@@ -8,3 +8,16 @@
 //     orderIDstor = orderId;
 //     $("#txtOrderID").val(orderId);
 // }
+
+function clearAllbutton() {
+    $('#selectCusID,#orderCustomerID,#orderCustomerName ,#orderCustomerSalary ,#orderCustomerAddress ,#selectItemCode,#txtItemCode ,#txtItemDescription ,#txtItemPrice ,#txtQTYOnHand ,#txtQty ,#total ,#subtotal').val('');
+    finalTotal = 0;
+    final = 0;
+    $('#btnAddToTable').prop("disabled", true);
+}
+
+function clearBill() {
+    $('#txtBalance ,#txtCash ,#txtDiscount').val('');
+    $('#total ,#subtotal').text('00.0');
+    $('#btnAddToTable').prop("disabled", true);
+}

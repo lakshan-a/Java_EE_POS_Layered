@@ -10,6 +10,11 @@ $('#txtCash').val("0");
 $('#txtDiscount').val("0");
 $('#txtBalance').val("0");
 
+$('#btnClear').on('click', function () {
+    clearAllbutton();
+    clearBill();
+});
+
 function loadAllCusDet(){
     $.ajax({
         url : "http://localhost:8080/app/customers",
