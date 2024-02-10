@@ -8,6 +8,17 @@ var validationName;
 var validationAddress;
 var validationSalary;
 
+let customerNumberCounter = 1;
+let customerIDstor;
+
+generateCustomerID();
+function generateCustomerID() {
+    const customerID = `C${String(customerNumberCounter).padStart(3, '0')}`;
+    customerNumberCounter++;
+    customerIDstor = customerID;
+    $("#txtCustomerID").val(customerID);
+}
+
 
 $("#btnCusAdd").attr('disabled',true);
 $("#btnCusUpdate").attr('disabled',true);
