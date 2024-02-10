@@ -19,6 +19,12 @@ function generateID() {
     $("#txtCustomerID").val(customerID);
 }
 
+function clearCustomerInputFields() {
+    $("#txtCustomerID,#txtCustomerName,#txtCustomerAddress,#txtCustomerSalary").val("");
+    $("#txtCustomerID,#txtCustomerName,#txtCustomerAddress,#txtCustomerSalary").css("border", "1px solid #ced4da");
+    $("#txtCustomerID").focus();
+}
+
 
 $("#btnCusAdd").attr('disabled',true);
 $("#btnCusUpdate").attr('disabled',true);
@@ -96,3 +102,13 @@ function setBtn() {
         $("#btnCusUpdate").attr('disabled',false);
     }
 }
+
+// function saveUpdateAlert(vale, value2) {
+//     Swal.fire({
+//         position: 'top-end',
+//         icon: 'success',
+//         title: vale + ' has been ' + value2,
+//         showConfirmButton: false,
+//         timer: 2500
+//     });
+// }

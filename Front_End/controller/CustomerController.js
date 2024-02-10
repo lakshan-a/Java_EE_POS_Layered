@@ -76,6 +76,8 @@ $('#btnCusAdd').click(function () {
         salary:salary
     };
 
+
+
     const jsonObj = JSON.stringify(customerObj);
 
     $.ajax({
@@ -86,13 +88,16 @@ $('#btnCusAdd').click(function () {
             address:address,
             salary:salary},
 
+
         success: function (resp, textStatus, jqxhr) {
             console.log("success: ", resp);
             console.log("success: ", textStatus);
             console.log("success: ", jqxhr);
+
         },
         success : function() {
             loadAllCus();
+            clearCustomerInputFields();
         },
         error: function (error) {
             console.log("error: ", error);
@@ -129,6 +134,8 @@ $('#btnCusUpdate').click(function () {
         },
         success : function() {
             loadAllCus();
+            clearCustomerInputFields();
+
             // saveUpdateAlert(CustomerId, "updated.");
 
         },

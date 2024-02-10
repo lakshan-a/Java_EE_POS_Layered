@@ -19,6 +19,12 @@ function generateItemID() {
     $("#itemCode").val(itemCode);
 }
 
+function clearItemInputFields() {
+    $("#itemCode,#itemName,#itemPrice,#itemQty").val("");
+    $("#itemCode,#itemName,#itemPrice,#itemQty").css("border", "1px solid #ced4da");
+    $("#itemCode").focus();
+}
+
 
 $("#btnItemAdd").attr('disabled',true);
 $("#btnItemUpdate").attr('disabled',true);
